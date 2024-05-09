@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+
+<!**********************************HTML Styles**********************************>
+<div id = "storyWindow">
+<! Set Almendra Display Font for headings, buttons, text>
+<link href=link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Jacquard+12+Charted&family=MedievalSharp&display=swap" rel="stylesheet">
+<style>
+body {
+    font-family: "MedievalSharp", cursive;;font-size: 36px;
+}
+</style>
+
+<!********style for wrinkled parchment paper background*********************>
+<style>
+  body{
+    background-image: url("https://jdmeducational.com/wp-content/uploads/2024/05/parchment-paper-revised.jpg");
+    background-repeat: no-repeat no-repeat;
+    background-size: 100% 100%;
+  }
+</style>
+
+<!**********************************headings**********************************>
+<head>
+<h1 id = "h1Heading"; style = "text-align:center";><u>MathWizard</u></h1>
+<h2 id = "h2Heading" style = "text-align:center";>A Medieval Math Puzzle
+</head>Adventure</h1>
+
+<!*********custom style elements for pictures, paragraphs, etc.************>
+<style>
+.myDiv {
+  max-width: 100%;
+  min-width: 20%;
+  <!max-height: 60vh;>
+  margin: 5px;
+  <!background-image: "https://jdmeducational.com/wp-content/uploads/2024/05/Parchment-Paper.jpg";>
+}
+</style>
+
+<style>
+.centeredBlock{
+  display: block; 
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  <!max-height: 70vh;>
+}
+</style>
+
+<!*********************Custom style elements for buttons.*********************>
+<style>
+.button {
+  border: 32px solid black;
+  border-radius:5px;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family:MedievalSharp;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 20px;
+  cursor: pointer;
+}
+.buttonNext {background-color: #99410e;} /* Brown */
+</style>
+
+<!**************************container and center style*******************************>
+<style>
+.container {
+  height: 200px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
+
+<!*****************************Image display div*****************************>
+<div id = "imageDiv"; class = "myDiv">
+    <img id = "pictureDisplayed"; class="centeredBlock"; src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Neuschwanstein_Castle_%28532850%29.jpg">
+</div>
+
+<!**************************Text and button display div*****************************>
+<div id = "buttonAndTextDiv"; class = "myDiv">
+  <p id = "imageCaptionText"; class = "centeredBlock"><b><center></b></center></p>
+  
+</div>
+
+<div class="container"> 
+  <div class="center">
+    <button id = "nextButton"; class="button buttonNext"; style="text-align: center"; onclick="updatePageIndex(myPageIndex)">Click Here To Start<br> Your Adventure!
+    </button>
+  </div>
+</div> 
+
+<!*****************************audio: rain, music, etc.*****************************>
+<audio id="myAudio" controls loop>
+  <source src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Good_King_Wenceslas_-_Concert_Band_-_United_States_Air_Force_Band.mp3" type="audio/ogg">
+</audio>
+<!Opening Audio File:Good King Wenceslas - Concert Band - United States Air Force Band.mp3>
+</div>
+
+
+<!******puzzleWindow contains the math puzzle; hidden until a puzzle challenge******>
+<div id = "puzzleWindow">
+<! Here are some custom style elements for headers, paragraphs, lists, buttons.  >
+
+<!**********************Custom style elements for headers.***************************>
+<style>
+.header{
+}
+.headerGray{
+background-color: #808080;
+text-align: center;
+font-family:"Garamond";
+font-size:46px;
+} /* Gray */
+.headerLightGray{
+background-color: #d3d3d3;
+text-align: left;
+font-family:"Papyrus";
+font-size:40px;
+width: max-content;
+} /* Light Gray */
+</style>
+
+<!*******************Custom style elements for paragraphs.***********************>
+<style>
+.p{}
+.blueP {background-color: #add8e6;} /* Light Blue */
+.bigP {font-size: 36px;} /* Larger Font */
+</style>
+
+<!********************Custom style elements for lists.*********************>
+<style>
+.ul{}
+.bigUL{font-size: 36px;}
+</style>
+
+<!********************Custom style elements for buttons.**********************>
+<style>
+.button {
+  border: 3px solid black;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.buttonBlue {background-color: #008CBA;} /* Blue */
+.buttonGreen {background-color: #39bc22;} /* Green */
+.buttonRed {background-color: #e9252b;} /* Red */
+</style>
+
+<!**********************Custom style elements for containers.************************>
+<style>
+.div {}
+.rowDiv{
+  display: flex;
+}
+</style>
+
+<!***********************Top of visible page starts here.***********************>
+
+<!***********************Header and subheader.*******************>
+<h1 id="header" class = "headerGray" background-color:#808080>MathChallenge</h1>
+<h2 id="subheader" class = "headerLightGray">Chapter 1 Puzzle Challenge!</h2>
+
+<!**********************Intro (explanation of goals).*****************************>
+<p id = "intro1" class = bigP><b>Your task is to click on the three blue buttons below until the "current value" matches the "goal value" for each of the three buttons.</b>
+</p>
+
+<!******************Intro (explanation of button effects).*************************>
+<p id = "intro2" class = bigP>
+<b>Clicking each of the three blue buttons has a specific effect. The effects are listed on the buttons themselves.<br><br>Example: clicking on a button with an effect of 1, 2, 3 will:</b>
+<ul id = "buttonEffects" class = "bigUL">
+<li><b>add 1 to the current value of the <i>leftmost button</i></b></li>
+<li><b>add 2 to the current value of the <i>middle button</i></b></li>
+<li><b>add 3 to the current value of the <i>rightmost button</i></b></li>
+</ul>
+</p>
+
+<!******************************Other information.******************************>
+<p class = "bigP"><b>Some other things to keep in mind:</b><br>
+<ul id = "otherInfo" class = "bigUL">
+<li><b>You can reset all button values to zero with the green "Reset" button.</b></li>
+<li><b>You can submit your solution with the green "Submit" button.</b></li>
+<li><b>A value of zero for an effect means no change will occur.</b></li>
+<li><b>Negative values for an effect mean subtraction instead of addition.</b></li>
+</ul>
+</p>
+
+<!**********************************Good luck.**********************************>
+<p class = "bigP">
+<b>Good luck!</b>
+</p>
+
+<p id = "threeButtons">
+<button id = "leftButton" class="button buttonBlue" onclick="updateLeftButtonValues()">
+<u>Goal Value:</u> 3<br><br>
+Current Value: 0<br><br>
+<u>Effect:</u><br>
+1, 0, 0
+</button>
+
+<button id = "middleButton" class="button buttonBlue" onclick="updateMiddleButtonValues()">
+<u>Goal Value:</u> 5<br><br>
+Current Value: 0<br><br>
+<u>Effect:</u><br>
+0, 1, 0
+</button>
+
+<button id = "rightButton" class="button buttonBlue" onclick="updateRightButtonValues()">
+<u>Goal Value:</u> 7<br><br>
+Current Value: 0<br><br>
+<u>Effect:</u><br>
+0, 0, 1
+</button>
+</p>
+
+<p id = "resetSubmitButtons" class = "bigP">
+<button id = "resetButton" class="button buttonGreen" onclick="resetButtonValues()">Reset</button>
+<button id = "submitButton" class="button buttonGreen" onclick="checkSolutions()">Submit</button>
+</p>
+
+<p id = "Congratulations" class = "bigP"><b>Click the'Submit' button when ready.</b></p>
+
+<button id = "nextPuzzleButton" class="button buttonRed" onclick="updatePuzzleDisplay()">Next Puzzle</button>
+
+</div>
+
+
+
+
+
+</html>
+
+
+
+<script>
+//*****************************javascript starts here*****************************
+
+//******************************script for chapter 1*****************************
+
+//*********************declare picture URLs and array for display*********************
+let picture1URL = "https://upload.wikimedia.org/wikipedia/commons/a/ae/Neuschwanstein_Castle_%28532850%29.jpg"; // castle
+let picture2URL = "https://upload.wikimedia.org/wikipedia/commons/5/51/Wheat_Storm_%28217169671%29.jpeg"; // wheat farm
+let picture3URL = "https://upload.wikimedia.org/wikipedia/commons/9/9c/Septoria-tritici.jpg"; // diseased wheat
+let picture4URL = "https://upload.wikimedia.org/wikipedia/commons/6/63/Dirt_road_in_Artigas_Department.jpg"; // dirt road to town
+let picture5URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Thea_%27s_gift%2C_group_of_travellers_in_front_of_an_inn_illustration_to_a_medieval_romance_PK-T-AW-4272%2C_PK-T-AW-5005.tif/lossy-page1-1600px-Thea_%27s_gift%2C_group_of_travellers_in_front_of_an_inn_illustration_to_a_medieval_romance_PK-T-AW-4272%2C_PK-T-AW-5005.tif.jpg?20210216194725"; // travelers outside inn
+let picture6URL = "https://upload.wikimedia.org/wikipedia/commons/b/bd/Warwick_Castle_by_night.JPG"; //castle at night
+let picture7URL = "https://upload.wikimedia.org/wikipedia/commons/f/updateMiddleButtonValues/Inside_Palermo_Castle.JPG"; //inside castle hall
+let picture8URL = "https://upload.wikimedia.org/wikipedia/commons/4/40/Longfellow%27s_Wayside_Inn_exterior_-_IMG_0767.JPG"; //outside of inn
+let picture9URL = "https://upload.wikimedia.org/wikipedia/commons/3/3a/Inside_The_Green_Dragon_inn.jpg"; // common room inside the inn
+let picture10URL = "https://upload.wikimedia.org/wikipedia/commons/d/d8/Bust_of_an_Elderly_Man_MET_DP872921.jpg"; //old man
+let picture11URL = "https://upload.wikimedia.org/wikipedia/commons/d/d8/Bust_of_an_Elderly_Man_MET_DP872921.jpg"; //old man
+let picture12URL = "";
+
+let pictureURLArray = [picture1URL, picture2URL, picture3URL, picture4URL, picture5URL, picture6URL, picture7URL, picture8URL, picture9URL, picture10URL, picture11URL, picture12URL];
+
+
+//****************declare written prose text and array for display******************
+let prose1 = "<b>Try your hand at the puzzles to save the kingdom!</b>";
+let prose2 = "<b>Before you were old enough to speak, you knew that your family grew wheat for the good people of the kingdom.<br><br> During your childhood, you helped your father to grow and harvest the crops.<br><br> Your favorite time of year was autumn, when you went into town with your father to sell the wheat.<br><br> You loved to marvel at the new buildings, talk to the people in town, and look over the goods for sale at the market.<br><br>This year, things would be different.</b>";
+let prose3 = "<b>You are now old enough to know when things are not right on the farm.<br><br> This is one of those times.<br><br> Your fears are confirmed when your father takes you aside one day to talk.<br><br> Father: There is a disease spreading through the wheat crop.<br><br> I have not seen anything like it before.<br><br> You: What can we do, father?<br><br> Father: I want you to make your way to the castle in town.<br><br> Seek out the king's advice; he is old and wise, so he may have seen this before.<br><br> You: Do you think I am ready to go alone?<br><br> Father: I know you are ready - take courage!<br><br> I must stay here to try and stop the spread of the disease.<br><br> Your father hands you an infected leaf from the wheat crop to show the king.<br><br> You pack your things, go to bed early, and wake up before dawn the next day to start your journey.</b>";
+let prose4 = "<b>You set out on your journey early in the day.<br><br> It is clear, sunny, and cool, with a light breeze.<br><br> After a few hours, you meet a man who asks you for any food that you can spare.<br><br> You give him what little you can, and he is grateful.<br><br> It seems that your farm is not the only place seeing desperate times.<br><br> A few hours later, you are happy to find a group of people on the road.<br><br> The group is traveling to town, and they invite you to join them.</b>";
+let prose5 = "<b>As you travel along with your new companions, a light rain begins to fall. Close to nightfall, the rain became a downpour.<br><br> There was no shelter along the road to stop for rest.<br><br> You and your companions walk a long time through the frigid, rainy darkness.<br><br> Just when you think you can endure the cold no more, you see lights in the distance.<br><br> Close to midnight, you arrive at the edge of the town where the king's castle stands.<br><br> Your clothes are soaking wet, and you are shivering with cold as you approach the gate.</b>";
+let prose6 = "<b>After entering the town, you part ways with your traveling companions and bid them farewell.<br><br> They make their way towards an inn, while you walk towards the castle - alone.<br><br> You slowly make your way through the dark streets of the town.<br><br>You can only hear the sounds of rain falling and distant thunder.<br><br> You walk for about 20 minutes until you find yourself in front of the king's castle.<br><br> To your surprise, you see a crowd of people standing just inside the main hall.</b>";
+let prose7 = "<b>You approach one of the men standing in the crowded hall and start a conversation.<br><br> You: What is going on here?<br><br> Man: We are waiting to see the king.<br><br> You: All of you? Why do you want to see the king, sir?<br><br> Man: I am a farmer, and my potato crop is failing due to a disease. I have never seen anything like it before.<br><br> You: My father's wheat crop is infected with a disease as well - how bad is it on your farm?<br><br> Man: Bad enough that I had to leave the farm behind and come here, just to wait around for hours to see the king!<br><br> Some of the people from the crowd enter the castle over the next several hours - but it is a large crowd.<br><br></b>";
+let prose8 = "<b>At daybreak, you are exhausted after hours of anxious waiting.<br><br> There is no chance to see the king anytime soon, so you make your way to the inn where your companions were staying.<br><br> After walking and searching for a while, you find the inn and step up to the front door.</b>";
+let prose9 = "<b>As soon as you enter the inn, you are greeted by the sounds of numerous people talking while eating fresh-baked bread and drinking ale.<br><br> Every chair at every table is full, except for one old man sitting at a table in a corner by himself.</b>";
+let prose10 = "<b>You see some of your traveling companions sitting at one table, so you stop over to say hello.<br><br> Then, you approach the table where the old man is sitting. <br><br> Old Man: I have been waiting for you.<br><br> Me: You have?</b>";
+let prose11 = "<b>Old Man: Why yes, of course!<br><br> I have been waiting a long time for someone clever to come along.<br><br> Me: Are you talking about me?<br><br> Am I really all that clever?<br><br> Old Man: I could have sworn you were, but now that you mention it, maybe not!<br><br> Will you allow me to test your abilities and find out?</b>";
+let prose12 = "";
+let proseArray = [prose1, prose2, prose3, prose4, prose5, prose6, prose7, prose8, prose9, prose10, prose11, prose12];
+
+
+//***********declare button text and array for display**********************
+let buttonText1 = "Click Here To Start<br> Your First Quest!";
+let buttonText2 = "Click Here To <br>Continue The Story.";
+let buttonText3 = "Click Here To <br>Start Your Journey.";
+let buttonText4 = "Click Here To Continue<br> On Your Journey.";
+let buttonText5 = "Click Here To <br>Enter The Town.";
+let buttonText6 = "Click Here To Ask<br> About The Crowd.";
+let buttonText7 = "Click Here To<br> Wait Around<br> Until Daybreak.";
+let buttonText8 = "Click Here To <br>Enter The Inn.";
+let buttonText9 = "Click Here <br>To Talk To<br> The Old Man.";
+let buttonText10 = "Click Here To Continue <br>With The Conversation.";
+let buttonText11 = "Click Here To Try A<br> Test Of Your Abilities.";
+let buttonText12 = "";
+let buttonTextArray = [buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8, buttonText9, buttonText10, buttonText11, buttonText12];
+
+
+//*********declare audio URLs and array for music/sounds************************
+let audioSound1 = "https://upload.wikimedia.org/wikipedia/commons/6/6a/Good_King_Wenceslas_-_Concert_Band_-_United_States_Air_Force_Band.mp3"; //castle song for intro screen
+let audioSound2 = "https://upload.wikimedia.org/wikipedia/commons/e/e9/Elgar%3B_Enigma_variations%2C_Theme_VIII._W.N.ogg"; //farming theme
+let audioSound3 = "https://upload.wikimedia.org/wikipedia/commons/4/48/Ludwig_van_Beethoven_-_sonata_no._14_in_c_sharp_minor_%27moonlight%27%2C_op._27_no._2_-_i._adagio_sostenuto.ogg"; //wheat disease the
+let audioSound4 = "https://vmirror.imslp.org/files/imglnks/usimg/4/4f/IMSLP110170-PMLP62816-invitation.mp3"; //invitation to travel
+let audioSound5 = "https://upload.wikimedia.org/wikipedia/commons/4/42/Rain_and_thunder.ogg"; //rain and thunder
+let audioSound6 = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Rain_on_a_veranda_and_t.ogg"; //rain and thunder 2
+let audioSound7 = "https://upload.wikimedia.org/wikipedia/commons/a/a9/360703_eguobyte_large-crowd-medium-distance-stereo.wav"; //crowd of people talking
+let audioSound8= "https://upload.wikimedia.org/wikipedia/commons/e/e7/Elgar%3B_Enigma_variations%2C_Theme_IX._Nimrod.ogg"; //castle hall theme
+let audioSound9 = "https://upload.wikimedia.org/wikipedia/commons/b/b5/Restaurant_ambience.ogg"; //inside the inn the next morning
+let audioSound10 = "https://upload.wikimedia.org/wikipedia/commons/9/91/US_Marine_Band_Introduction_and_Allegro_%28Ravel%29.opus";
+let audioSound11 = "https://upload.wikimedia.org/wikipedia/commons/b/b7/Tchaikovsky%2C_Symphony_No._6_In_B_Minor%2C_Op._74%2C_%27Pathetique%27_-_I._Adagio%2C_Allegro_Non_Troppo.ogg";
+let audioSound12 = "";
+let audioSoundArray = [audioSound1, audioSound2, audioSound3, audioSound4, audioSound5, audioSound6, audioSound7, audioSound8, audioSound9, audioSound10, audioSound11, audioSound12];
+
+let audioVolumeArray = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+document.getElementById("puzzleWindow").style.display = "none"; //hide puzzle window until it is time to display it
+
+let myPageIndex = [0]; //page index starts at 0; update each time next button is clicked
+
+var x = document.getElementById("myAudio");
+updatePageIndex(myPageIndex);
+x.volume = 1;
+x.play();
+//x.removeAttribute('controls'); //this hides the audio controls
+
+//**********this function increments the currentPage by 1*******************
+function updatePageIndex(myPageIndex){
+  
+  if(myPageIndex[0] === 11){
+    document.getElementById("storyWindow").style.display = "none";
+    document.getElementById("puzzleWindow").style.display = "block";
+    window.scrollTo(0,0);
+  }else{
+    x.pause();
+    chooseDisplayPage(myPageIndex);
+    myPageIndex[0] += 1;
+    x.volume = audioVolumeArray[myPageIndex[0]];
+    x.play();
+    window.scrollTo(0,0);
+  }
+}
+
+//this function tells us which page (image, buttons, text, etc.) to display on screen
+function chooseDisplayPage(myPageIndex){
+  document.getElementById("pictureDisplayed").src = pictureURLArray[myPageIndex[0]];
+  document.getElementById("imageCaptionText").innerHTML = proseArray[myPageIndex[0]];
+  document.getElementById("nextButton").innerHTML = buttonTextArray[myPageIndex[0]];
+  document.getElementById("myAudio").src = audioSoundArray[myPageIndex[0]];
+  //change the image displayed, the image caption text, button text, and audio
+}
+//*******************end of script for chapter 1**********************************
+
+
+
+//***********************script for puzzles************************
+let puzzleCounter = [0]; //start with the first puzzle (at zero) and count  up.
+let goalArray = [[3, 6, 10, 4, 4], [5, 4, 9, 4, -14], [7, 6, 14, -2, 0]]; //array of arrays for goal values: left, then middle, then right
+let effectArrayLeft = [[1, 1, 1, 1, 8], [0, 1, 2, 1, -7], [0, 0, 3, -2, -2]]; //array of arrays for effect values, left button
+let effectArrayMiddle = [[0, 0, 2, 3, 5], [1, 1, 2, -3, -6], [0, 1, 2, 2, -9]]; //array of arrays for effect values, left button
+let effectArrayRight = [[0, 1, 2, -4, -4], [0, 0, 1, 5, 3], [1, 1, 2, -1, 5]]; //array of arrays for effect values, left button
+let effectArray = [effectArrayLeft, effectArrayMiddle, effectArrayRight];
+document.getElementById("nextPuzzleButton").style.display = "none";
+
+let b1 = 0;
+let b2 = 0;
+let b3 = 0;
+let buttonValues = [0, 0, 0];
+let effectStrings = ["", "", ""];
+
+function setButtonValues(){
+  for(i = 0; i < 3; i++){
+    for(j = 0; j < 3; j++){
+        effectStrings[j] += effectArray[j][i][puzzleCounter[0]];
+      if(i != 2){
+        effectStrings[j] += ", ";
+      }
+    }
+  }
+  
+  document.getElementById("leftButton").innerHTML =
+  '<u>Goal Value:</u> ' + goalArray[0][puzzleCounter[0]] + '<br><br> Current Value: '
+  + buttonValues[0]
+  + '<br><br> <u>Effect:</u><br> '
+  + effectStrings[0];
+  
+  document.getElementById("middleButton").innerHTML =
+  '<u>Goal Value:</u> ' + goalArray[1][puzzleCounter[0]] + '<br><br> Current Value: '
+  + buttonValues[1]
+  + '<br><br> <u>Effect:</u><br> '
+  + effectStrings[1];
+  
+  document.getElementById("rightButton").innerHTML =
+  '<u>Goal Value:</u> ' + goalArray[2][puzzleCounter[0]] + '<br><br> Current Value: '
+  + buttonValues[2]
+  + '<br><br> <u>Effect:</u><br> '
+  + effectStrings[2];
+  
+  for(k = 0; k < 3; k++){
+    effectStrings[k] = "";
+  }
+}
+
+function updateLeftButtonValues() { //update button values on left button click
+  for(l = 0; l < 3; l++){
+    buttonValues[l] += effectArray[0][l][puzzleCounter[0]];
+  }
+  setButtonValues();
+}
+
+function updateMiddleButtonValues() { //update button values on middle button click
+  for(m = 0; m < 3; m++){
+    buttonValues[m] += effectArray[1][m][puzzleCounter[0]];
+  }
+  setButtonValues();
+}
+
+function updateRightButtonValues() { //update button values on right button click
+  for(n = 0; n < 3; n++){
+    buttonValues[n] += effectArray[2][n][puzzleCounter[0]];
+  }
+  setButtonValues();
+}
+
+function resetButtonValues() { //reset button values to zero for new puzzle
+  for(p = 0; p < 3; p++){
+    buttonValues[p] = 0;
+  }
+  setButtonValues();
+}
+
+function checkSolutions() { //check solutions when submitted
+  if(buttonValues[0]===goalArray[0][puzzleCounter[0]]
+  && buttonValues[1]===goalArray[1][puzzleCounter[0]]
+  && buttonValues[2]===goalArray[2][puzzleCounter[0]]){
+    if(puzzleCounter[0] === 4){
+      document.getElementById("Congratulations").innerHTML = "<b>You ARE clever after all! It seems you are ready for your next quest...</b>";
+      document.getElementById("nextPuzzleButton").style.display = "block"; //show hidden "next puzzle" button
+      document.getElementById("nextPuzzleButton").innerHTML = "Check back for Quest 2 soon!";
+      window.scrollTo(0,document.body.scrollHeight); //scroll to bottom of page after solution entered correctly
+      document.getElementById("myAudio").src = "https://upload.wikimedia.org/wikipedia/commons/9/91/Ride_of_the_Valkyries.ogg";
+      x.play();    
+    }else{
+      document.getElementById("Congratulations").innerHTML = "<b>Nice work! Now try the next puzzle.</b>";
+      document.getElementById("nextPuzzleButton").style.display = "block"; //show hidden "next puzzle" button
+      window.scrollTo(0,document.body.scrollHeight); //scroll to bottom of page after solution entered correctly
+    } 
+  }else{
+    document.getElementById("Congratulations").innerHTML = "<b>Not quite - try again.</b>";
+  }
+}
+
+function updatePuzzleDisplay() { //update for next puzzle when next button is clicked
+  puzzleCounter[0]++;
+  document.getElementById("nextPuzzleButton").style.display = "none";
+  resetButtonValues(); //resets all button values to zero
+  window.scrollTo(0,0); //scrolls to top of page
+  document.getElementById("Congratulations").innerHTML = "<b>Click the'Submit' button when ready.</b>";
+}
+//***************************end of script for puzzle 1***************************
+
+
+</script>
