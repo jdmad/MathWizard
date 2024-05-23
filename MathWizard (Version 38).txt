@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!--**********************************HEAD**********************************-->
+   <head>
+      <!--**********************************TITLE**********************************-->
+      <title>MathWizard</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="src/style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Jacquard+12+Charted&family=MedievalSharp&display=swap" rel="stylesheet">
+      <!--************************HTML Styles: divs, blocks, buttons, etc.*******************************-->
+      <style>
+         h1{
+         font-family: "MedievalSharp", cursive;
+         font-size: 48px;
+         text-align:center;
+         }
+         h2{
+         font-family: "MedievalSharp", cursive;
+         font-size: 36px;
+         text-align:center;
+         }
+         body {
+         font-family: "MedievalSharp", cursive;
+         font-size: 36px;
+         background-image: url("https://jdmeducational.com/wp-content/uploads/2024/05/parchment-paper-revised.jpg");
+         background-repeat: no-repeat no-repeat;
+         background-size: 100% 100%;
+         }
+         .introWindow{
+         display: block;
+         align-items: center;
+         }
+         .introMenuDiv{
+         display: flex;
+         width:200px;
+         margin:auto;
+         text-align:center;
+         }
+         .myDiv{
+         max-width: 100%;
+         min-width: 20%;
+         margin: 5px;
+         }
+         .centeredBlock{
+         display: block; 
+         max-width: 100%;
+         margin-left: auto;
+         margin-right: auto;
+         }
+         .container {
+         height: 200px;
+         position: relative;
+         }
+         .center {
+         margin: 0;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         -ms-transform: translate(-50%, -50%);
+         transform: translate(-50%, -50%);
+         }
+         .button {
+         border: 3px solid black;
+         border-radius:5px;
+         color: white;
+         padding: 5px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-family:MedievalSharp;
+         font-size: 36px;
+         font-weight: bold;
+         margin: 4px 2px;
+         cursor: pointer;
+         }
+         .buttonNext{
+         background-color: #99410e;
+         } /* Brown */
+         .buttonStartMenu{
+         width:200px;
+         background-color: #99410e;
+         margin:20px;
+         text-align: center;
+         } /* Brown Menu Button*/
+         .headerGray{
+         background-color: #808080;
+         text-align: center;
+         font-family:"Garamond";
+         font-size:48px;
+         } /* Gray */
+         .headerLightGray{
+         background-color: #d3d3d3;
+         text-align: left;
+         font-family:"Papyrus";
+         font-size:48px;
+         width: max-content;
+         } /* Light Gray */
+         .blueP {
+         background-color: #add8e6;
+         } /* Light Blue */
+         .bigP {
+         font-size: 36px;
+         } /* Larger Font */
+         .bigUL{
+         font-size: 36px;
+         }
+         .buttonBlue {
+         background-color: #008CBA;
+         } /* Blue */
+         .buttonGreen {
+         background-color: #39bc22;
+         } /* Green */
+         .buttonRed {
+         background-color: #e9252b;
+         } /* Red */
+         .rowDiv{
+         display: flex;
+         }
+         .settingsDiv{
+         margin:20px;
+         text-align:center;
+         }
+         .borderSettingsDiv{
+         margin:20px;
+         border-style:double;
+         }
+         .puzzle2Button{
+         width: 78px;
+         border: 15px solid #008CBA;
+         border-radius: 16px;
+         color: white;
+         text-shadow: 4px 4px 0 #000000, 4px -4px 0 #000000, -4px 4px 0 #000000, -4px -4px 0 #000000;
+         padding: 5px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 40px;
+         font-weight: bold;
+         margin: 4px 2px;
+         cursor: pointer;
+         background-image: url("https://jdmeducational.com/wp-content/uploads/2024/05/vial6.jpg");
+         background-repeat: no-repeat no-repeat;
+         }
+         .puzzle3Button{
+         width: 200px;
+         height: 200px;
+         border-radius: 16px;
+         display: inline-block;
+         margin: 2px 2px;
+         cursor: pointer;
+         background-image: url("https://jdmeducational.com/wp-content/uploads/2024/05/MathWizard-Puzzle-3-1-1-RESIZED.jpg");
+         background-repeat: no-repeat no-repeat;
+         }
+      </style>
+   </head>
+   <body>
+      <!--***********************Top of visible page starts here.***********************-->
+      <!--**********************************HEADINGS**********************************-->
+      <h1 id = "h1Heading"><u>MathWizard</u></h1>
+      <h2 id = "h2Heading">A Medieval Math<br> Puzzle Adventure</h2>
+      <!--**********************************INTROWINDOW**********************************-->
+      <div id = "introWindow" class = "introWindow">
+         <div class = "introMenuDiv">
+            <button id = "startButtonIntro" class="button buttonStartMenu" onclick="startGame()">Start</button>
+         </div>
+         <br style="clear: both;">
+         <div class = "introMenuDiv">
+            <button id = "settingsButtonIntro" class="button buttonStartMenu" onclick="showSettings()">Settings</button>
+         </div>
+         <br style="clear: both;">
+         <div class = "introMenuDiv">
+            <button id = "aboutButtonIntro" class="button buttonStartMenu" onclick="showAbout()">About</button>
+         </div>
+         <br style="clear: both;">
+         <div class = "introMenuDiv">
+            <button id = "shareButtonIntro" class="button buttonStartMenu" onclick="showShare()">Share</button>
+         </div>
+         <br style="clear: both;">
+         <div class = "introMenuDiv">
+            <button id = "creditsButtonIntro" class="button buttonStartMenu" onclick="showCredits()">Credits</button>
+         </div>
+         <br style="clear: both;">
+      </div>
+      <!--**********************************ABOUT**********************************-->
+      <div id = "about" class = "introWindow">
+         <p class = "bigP">
+            <u>About MathWizard</u>
+         </p>
+         <p>
+            <b>MathWizard is an interactive puzzle game that tells the story of a young man's journey to save the family farm. <br><br>Along the way, you will face challenges in the form of math puzzles.<br><br> Each chapter contains a part of the story, followed by a challenge (with 5 puzzles of increasing difficulty).<br><br> Solve the puzzles so you can save the family farm - and maybe the kingdom!</b>
+         </p>
+         <div class = "introMenuDiv">
+            <button id = "returnFromAbout" class="button buttonStartMenu" onclick="returnToStartMenuFromAbout()">Return To<br> Start Menu</button>
+         </div>
+      </div>
+      <!--**********************************STORYWINDOW**********************************-->
+      <div id = "storyWindow">
+         <!--*****************************Image, text, button display divs*****************************-->
+         <div id = "imageDiv" class = "myDiv">
+            <img id = "pictureDisplayed" class="centeredBlock" src="https://upload.wikimedia.org/wikipedia/commons/f/f0/2020_08_Bojnice_castle_1.jpg"  alt="storyPicture">
+         </div>
+         <div class = "myDiv">
+            <p id = "imageCaptionText" class = "centeredBlock"></p>
+         </div>
+         <div class="container">
+            <div class="center">
+               <button id = "nextButton" class="button buttonNext" style="text-align: center" onclick="updatePageIndex()">Click Here To Start<br> Your Adventure!</button>
+            </div>
+         </div>
+         <!--*****************************audio: rain, music, etc.*****************************-->
+         <audio id="myAudio" controls loop>
+            <source src="https://upload.wikimedia.org/wikipedia/commons/4/41/Aida-Trompeten.ogg">
+         </audio>
+      </div>
+      <!--**********************************END STORYWINDOW HTML**********************************-->
+      <!--**********************************PUZZLEWINDOW**********************************-->
+      <div id = "puzzleWindow">
+         <!--***********************Puzzle Header & subheader*******************-->
+         <p id="header" class = "headerGray">
+            MathChallenge
+         </p>
+         <p id="subheader" class = "headerLightGray">
+            Chapter 1 Puzzle Challenge!
+         </p>
+         <!--***********************START PUZZLE 1 HTML*******************-->
+         <div id = "challenge1">
+            <!--**********************Intro (explanation of goals)*****************************-->
+            <p id = "intro1_1" class = "bigP">
+               <b>Your task is to click on the three blue buttons below until the <u>current value</u> matches the <u>goal value</u> for each of the three buttons.</b>
+            </p>
+            <!--******************Intro (explanation of button effects)*************************-->
+            <div>
+            <p id = "intro1_2" class = "bigP"><b>Clicking each of the three blue buttons has a specific effect. The effects are listed on the buttons themselves.<br><br>Example: clicking on a button with an effect of 1, 2, 3 will:</b></p>
+            <ul id = "buttonEffects" class = "bigUL">
+               <li><b>add 1 to the current value of the <i>leftmost button</i></b></li>
+               <li><b>add 2 to the current value of the <i>middle button</i></b></li>
+               <li><b>add 3 to the current value of the <i>rightmost button</i></b></li>
+            </ul>
+            </div>
+            <!--******************************Other information.******************************-->
+            <div>
+            <p id = "otherInfo1" class = "bigP">
+               <b>Some other things to keep in mind:</b>
+            </p>
+            <ul class = "bigUL">
+               <li><b>You can reset all button values to zero with the green <u>Reset</u> button.</b></li>
+               <li><b>You can submit your solution with the green <u>Submit</u> button.</b></li>
+               <li><b>A value of zero for an effect means no change will occur.</b></li>
+               <li><b>Negative values for an effect mean subtraction instead of addition.</b></li>
+               <li><b>You can show hints with the red Hint 1, Hint 2, and Hint 3 buttons.</b></li>
+            </ul>
+            </div>
+            <!--**********************************Good luck.**********************************-->
+            <p class = "bigP">
+               <b>Good luck!</b>
+            </p>
+            <!--**********************************Puzzle 1 Buttons**********************************-->
+            <div id = "threeButtons">
+               <button id = "leftButton" class="button buttonBlue" onclick="updateButtonValuesPuzzle1(0)">
+               <u>Goal Value:</u> 3<br><br>
+               Current Value: 0<br><br>
+               <u>Effect:</u><br>
+               1, 0, 0
+               </button>
+               <button id = "middleButton" class="button buttonBlue" onclick="updateButtonValuesPuzzle1(1)">
+               <u>Goal Value:</u> 5<br><br>
+               Current Value: 0<br><br>
+               <u>Effect:</u><br>
+               0, 1, 0
+               </button>
+               <button id = "rightButton" class="button buttonBlue" onclick="updateButtonValuesPuzzle1(2)">
+               <u>Goal Value:</u> 7<br><br>
+               Current Value: 0<br><br>
+               <u>Effect:</u><br>
+               0, 0, 1
+               </button>
+            </div>
+         </div>
+         <!--***********************END PUZZLE 1 HTML*******************-->
+         <!--***********************START PUZZLE 2 HTML*******************-->
+         <div id = "challenge2">
+            <!--**********************Intro (explanation of goals).*****************************-->
+            <p id = "intro2_1" class = "bigP">
+               <b>Your task is to click on the blue buttons below until the <u>total values</u> for each color are equal.</b>
+            </p>
+            <!--******************Intro (explanation of button effects).*************************-->
+            <p id = "intro2_2" class = "bigP">
+               <b>Each time you click on a blue button, its color will change. The value of a button is displayed on the button.</b>
+            </p>
+            <!--******************************Other information.******************************-->
+            <div>
+            <p id = "otherInfo2" class = "bigP">
+               <b>Some other things to keep in mind:</b>
+            </p>
+            <ul class = "bigUL">
+               <li><b>You can reset all button colors to blue with the green <u>Reset</u> button.</b></li>
+               <li><b>You can submit your solution with the green <u>Submit</u> button.</b></li>
+               <li><b>A value of zero for a button means nothing is added to the total for that button's color.</b></li>
+               <li><b>Negative values for a button means the value is subtracted from the total for that button's color.</b></li>
+               <li><b>You can show hints with the red Hint 1, Hint 2, and Hint 3 buttons.</b></li>
+            </ul>
+            </div>
+            <!--**********************************Good luck.**********************************-->
+            <p class = "bigP">
+               <b>Good luck!</b>
+            </p>
+            <!--**********************************Puzzle 2 Buttons**********************************-->
+            <div id = "buttonTotalsPuzzle2">
+               <p id = "blueButtonTotalPuzzle2">
+                  <b>Blue Button Total Value: </b>
+               </p>
+               <p id = "brownButtonTotalPuzzle2">
+                  <b>Brown Button Total Value: </b>
+               </p>
+            </div>
+            <div>
+              <button id = "button1Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(0)">0</button>
+              <button id = "button2Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(1)">0</button>
+              <button id = "button3Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(2)">0</button>
+              <button id = "button4Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(3)">0</button>
+              <button id = "button5Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(4)">0</button>
+              <button id = "button6Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(5)">0</button>
+              <button id = "button7Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(6)">0</button>
+              <button id = "button8Puzzle2" class="button puzzle2Button" onclick="changeButtonColor(7)">0</button>
+            </div>
+         </div>
+         <!--***********************END PUZZLE 2 HTML*******************-->
+         <!--***********************START PUZZLE 3 HTML*******************-->
+         <div id = "challenge3">
+            <!--**********************Intro (explanation of goals).*****************************-->
+            <p id = "intro3_1" class = "bigP">
+               <b>Your task is to click on the blue buttons below until the <u>total values</u> for each color are equal.</b>
+            </p>
+            <!--******************************Other information.******************************-->
+            <div>
+            <p id = "otherInfo3" class = "bigP">
+               <b>Some other things to keep in mind:</b>
+            </p>
+            <ul class = "bigUL">
+               <li><b>You can reset all button colors to blue with the green <u>Reset</u> button.</b></li>
+               <li><b>You can submit your solution with the green <u>Submit</u> button.</b></li>
+               <li><b>A value of zero for a button means nothing is added to the total for that button's color.</b></li>
+               <li><b>Negative values for a buton means the value is subtracted from the total for that buttons' color.</b></li>
+               <li><b>You can show hints with the red Hint 1, Hint 2, and Hint 3 buttons.</b></li>
+            </ul>
+            </div>
+            <!--**********************************Good luck.**********************************-->
+            <p class = "bigP">
+               <b>Good luck!</b>
+            </p>
+            <!--**********************************Puzzle 3 Buttons**********************************-->
+            <button id = "leftButtonPuzzle3" class="button puzzle3Button" onclick="rotateClockwise60()"></button>
+            
+puzzle3Button
+         </div>
+         <!--***********************END PUZZLE 3 HTML*******************-->
+         <!--***********************REUSABLE PUZZLE BUTTONS: RESET, SUBMIT, HINTS*******************-->
+         <div id = "resetSubmitButtons" class = "rowDiv">
+            <button id = "resetButton" class="button buttonGreen" onclick="resetButtonValues()">Reset</button>
+            <button id = "submitButton" class="button buttonGreen" onclick="checkSolutions()">Submit</button>
+         </div>
+         <div class = "rowDiv">
+            <button id = "hint1Button" class="button buttonRed" onclick="toggleHint(1)">Show Hint 1</button>
+            <p id = "Hint1" class = "bigP">
+            </p>
+         </div>
+         <div class = "rowDiv">
+            <button id = "hint2Button" class="button buttonRed" onclick="toggleHint(2)">Show Hint 2</button>
+            <p id = "Hint2" class = "bigP">
+            </p>
+         </div>
+         <div class = "rowDiv">
+            <button id = "hint3Button" class="button buttonRed" onclick="toggleHint(3)">Show Hint 3</button>
+            <p id = "Hint3" class = "bigP">
+            </p>
+         </div>
+         <p id = "Congratulations" class = "bigP">
+            <b>Click the <u>Submit</u> button when ready.</b>
+         </p>
+         <button id = "nextPuzzleButton" class="button buttonRed" onclick="updatePuzzleDisplay()">Next Puzzle</button>
+      </div>
+      <!--***********************END PUZZLE WINDOW HTML**************************-->
+      <!--***********************DEV TOOL BUTTONS(WILL NOT BE IN FINAL GAME)**************************-->
+      <div>
+         <button id = "skipToEndChapter" class="button buttonGreen" onclick="skipToEndOfChapter()">Skip To Chapter End (Dev Tool)</button>
+         <br>
+         <button id = "skipChapter" class="button buttonGreen" onclick="skipChapter()">Skip Chapter (Dev Tool)</button>
+         <br>
+         <button id = "skipPuzzle" class="button buttonGreen" onclick="skipPuzzle()">Skip Puzzle (Dev Tool)</button>
+         <br>
+         <button id = "settings" class="button buttonBlue" onclick="showSettings()">Settings</button>
+      </div>
+      <!--***********************SETTINGS WINDOW HTML**************************-->
+      <div id = "settingsWindow">
+         <div class = "settingsDiv">
+            <b>Game Settings</b>  
+         </div>
+         <div class = "borderSettingsDiv">
+            <u>Audio Settings:</u><br>
+            <button id = "toggleAudio" class="button buttonBlue" onclick="toggleMuteAudio()">Mute Volume</button>
+            <img id = "audioMutedStatus" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" style="width:25px;height:25px;"  alt="audioMutedImage">
+         </div>
+         <div class = "borderSettingsDiv">
+            <u>Display Settings:</u><br>
+            Press F11 to toggle full screen display mode.
+         </div>
+         <div id = "chapterSettingsText" class = "settingsDiv">
+            <b>Quest/Chapter Settings</b>  
+         </div>
+         <div class = "settingsDiv">
+            <button id = "restartChapter" class="button buttonBlue" onclick="showRestartChapterButtons()">Restart Chapter</button>
+         </div>
+         <div id = "restartChapterButtons" class = "settingsDiv">
+            <b>Are you sure you want to restart the chapter?</b>
+            <button id = "restartChapterY" class="button buttonGreen" onclick="restartChapter()">Yes, Restart Chapter</button>
+            <button id = "restartChapterN" class="button buttonRed" onclick="hideRestartChapterButtons()">No, Never Mind</button>
+         </div>
+         <div class = "settingsDiv">
+            <button id = "restartPuzzle" class="button buttonBlue" onclick="showRestartPuzzleButtons()">Restart Puzzle Challenge</button>
+         </div>
+         <div id = "restartPuzzleButtons" class = "settingsDiv">
+            <b>Are you sure you want to restart the puzzle challenge?</b>
+            <button id = "restartPuzzleY" class="button buttonGreen" onclick="restartPuzzle()">Yes, Restart Puzzle Challenge</button>
+            <button id = "restartPuzzleN" class="button buttonRed" onclick="hideRestartPuzzleButtons()">No, Never Mind</button>
+         </div>
+         <div class = "settingsDiv">
+            <button id = "quitToStartButton" class="button buttonBlue" onclick="showQuitToStartButtons()">Quit To Start Menu</button>
+         </div>
+         <div id = "quitToStartButtons" class = "settingsDiv">
+            <b>Are you sure you want to quit to the start menu?<br> You will lose your progress!</b>
+            <button id = "quitToStartY" class="button buttonGreen" onclick="quitToStart()">Yes, Quit To Start Menu</button>
+            <button id = "quitToStartN" class="button buttonRed" onclick="hideQuitToStartButtons()">No, Never Mind</button>
+         </div>
+         <div class = "settingsDiv">
+            <button id = "closeSettings" class="button buttonBlue" onclick="closeSettingsWindow()">Close (Return to Game)</button>
+         </div>
+      </div>
+      <!--***********************END SETTINGS WINDOW HTML**************************-->
+   </body>
+</html>
+<script>//JAVASCRIPT START
+   //*****************************javascript starts here*****************************
+   
+   //***************************script for narrative chapters***************************
+   
+   //*********************declare picture URLs and arrayS for display*********************
+   
+   //******************************CHAPTER 1*****************************
+   let picture1_1URL =
+     'https://upload.wikimedia.org/wikipedia/commons/f/f0/2020_08_Bojnice_castle_1.jpg'; // castle
+   let picture1_2URL =
+     'https://upload.wikimedia.org/wikipedia/commons/2/24/Irrigated_Wheat_field.JPG'; // wheat farm
+   let picture1_3URL =
+     'https://upload.wikimedia.org/wikipedia/commons/9/9c/Septoria-tritici.jpg'; // diseased wheat
+   let picture1_4URL =
+     'https://upload.wikimedia.org/wikipedia/commons/7/71/Golden_sun_over_a_dirt_road_%28Unsplash%29.jpg'; // dirt road to town
+   let picture1_5URL =
+     'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Thea_%27s_gift%2C_group_of_travellers_in_front_of_an_inn_illustration_to_a_medieval_romance_PK-T-AW-4272%2C_PK-T-AW-5005.tif/lossy-page1-1600px-Thea_%27s_gift%2C_group_of_travellers_in_front_of_an_inn_illustration_to_a_medieval_romance_PK-T-AW-4272%2C_PK-T-AW-5005.tif.jpg?20210216194725'; // travelers outside inn
+   let picture1_6URL =
+     'https://upload.wikimedia.org/wikipedia/commons/b/bd/Warwick_Castle_by_night.JPG'; //castle at night
+   let picture1_7URL =
+     'https://upload.wikimedia.org/wikipedia/commons/f/f2/Inside_Palermo_Castle.JPG'; //inside castle hall
+   let picture1_8URL =
+     'https://upload.wikimedia.org/wikipedia/commons/4/47/Hemmingen_Castle_Medieval_Building_20060521.jpg'; //walking to the inn
+   
+   let picture1_9URL =
+     'https://upload.wikimedia.org/wikipedia/commons/3/3a/Inside_The_Green_Dragon_inn.jpg'; // common room inside the inn
+   let picture1_10URL =
+     'https://upload.wikimedia.org/wikipedia/commons/d/d8/Bust_of_an_Elderly_Man_MET_DP872921.jpg'; //old man
+   let picture1_11URL =
+     'https://upload.wikimedia.org/wikipedia/commons/d/d8/Bust_of_an_Elderly_Man_MET_DP872921.jpg'; //old man
+   let pictureURL1_Array = [
+     picture1_1URL,
+     picture1_2URL,
+     picture1_3URL,
+     picture1_4URL,
+     picture1_5URL,
+     picture1_6URL,
+     picture1_7URL,
+     picture1_8URL,
+     picture1_9URL,
+     picture1_10URL,
+     picture1_11URL,
+   ];
+   //******************************CHAPTER 2*****************************
+   let picture2_1URL =
+     'https://upload.wikimedia.org/wikipedia/commons/d/d8/Bust_of_an_Elderly_Man_MET_DP872921.jpg'; //old man
+   let picture2_2URL =
+     'https://jdmeducational.com/wp-content/uploads/2024/05/looking-for-potion-shop.jpg'; //walking to potion shop
+   let picture2_3URL =
+     'https://upload.wikimedia.org/wikipedia/commons/c/c3/Geismar_Mittelalterdorf.jpg'; //outside of potion shop
+   let picture2_4URL =
+     'https://upload.wikimedia.org/wikipedia/commons/e/e3/Old_Man_with_Beard%2C_Fur_Cap%2C_and_Velvet_Cloak_MET_DP814340.jpg'; //potion shop owner in cloak
+   let picture2_5URL =
+     'https://upload.wikimedia.org/wikipedia/commons/2/21/Glass_Bottle_MET_178330.jpg'; //curious glass bottle
+   let picture2_6URL =
+     'https://upload.wikimedia.org/wikipedia/commons/e/e3/Old_Man_with_Beard%2C_Fur_Cap%2C_and_Velvet_Cloak_MET_DP814340.jpg'; //potion shop owner in cloak
+   let pictureURL2_Array = [
+     picture2_1URL,
+     picture2_2URL,
+     picture2_3URL,
+     picture2_4URL,
+     picture2_5URL,
+     picture2_6URL,
+   ];
+   //******************************CHAPTER 2*****************************
+   let picture3_1URL = "https://upload.wikimedia.org/wikipedia/commons/e/e3/Old_Man_with_Beard%2C_Fur_Cap%2C_and_Velvet_Cloak_MET_DP814340.jpg"; //potion shop owner in cloak
+   let picture3_2URL = "https://jdmeducational.com/wp-content/uploads/2024/05/coffee-glass.jpg"; //glass of coffee
+   let picture3_3URL = "https://jdmeducational.com/wp-content/uploads/2024/05/forest-road-out-of-town.jpg";
+   let picture3_4URL = "https://upload.wikimedia.org/wikipedia/commons/6/6a/Dirt_road_by_a_forest_%28Unsplash%29.jpg";
+   let picture3_5URL = "https://upload.wikimedia.org/wikipedia/commons/6/60/Fog_in_the_Buckhorn_Wilderness%2C_Olympic_National_Forest_%2823306867063%29.jpg";
+   let picture3_6URL = "https://jdmeducational.com/wp-content/uploads/2024/05/roadside-tent-forest.jpg";
+   let picture3_7URL = "https://jdmeducational.com/wp-content/uploads/2024/05/on-the-road-to-find-the-bandits.jpg";
+   let picture3_8URL = "https://jdmeducational.com/wp-content/uploads/2024/05/bandit-tracks-in-mud.jpg";
+   let picture3_9URL = "https://jdmeducational.com/wp-content/uploads/2024/05/path-into-the-woods.jpg";
+   let picture3_10URL = "https://upload.wikimedia.org/wikipedia/commons/6/61/Woods_Canyon_Trail_No._93_%2832157995443%29.jpg";
+   let picture3_11URL = "https://jdmeducational.com/wp-content/uploads/2024/05/man-behind-tree.jpg";
+   let picture3_12URL = "https://jdmeducational.com/wp-content/uploads/2024/05/5-trees-in-clearing.jpg";
+   let picture3_13URL = "https://upload.wikimedia.org/wikipedia/commons/b/bd/Juvenile_Owl_perching_on_Tree-Ochoco_%2825391612501%29.jpg";
+   
+   let pictureURL3_Array = [
+     picture3_1URL,
+     picture3_2URL,
+     picture3_3URL,
+     picture3_4URL,
+     picture3_5URL,
+     picture3_6URL,
+     picture3_7URL,
+     picture3_8URL,
+     picture3_9URL,
+     picture3_10URL,
+     picture3_11URL,
+     picture3_12URL,
+     picture3_13URL,
+   ];
+   //*****************************************************************
+   let pictureURL_Array = [pictureURL1_Array, pictureURL2_Array, pictureURL3_Array];
+   
+   //****************declare written PROSE text and array for display******************
+   
+   //******************************CHAPTER 1*****************************
+   let prose1_1 = '<b>Try your hand at the puzzles to save the kingdom!</b>';
+   let prose1_2 =
+     '<b>Before you were old enough to speak, you knew that your family grew wheat for the good people of the kingdom.<br><br> During your childhood, you helped your father to grow and harvest the crops.<br><br> Your favorite time of year was autumn, when you went into town with your father to sell the wheat.<br><br> You loved to marvel at the new buildings, talk to the people in town, and look over the goods for sale at the market.<br><br>This year, things would be different.</b>';
+   let prose1_3 =
+     "<b>You are now old enough to know when things are not right on the farm.<br><br> This is one of those times.<br><br> Your fears are confirmed when your father takes you aside one day to talk.<br><br> Father: There is a disease spreading through the wheat crop.<br><br> I have not seen anything like it before.<br><br> You: What can we do, father?<br><br> Father: I want you to make your way to the castle in town.<br><br> Seek out the king's advice; he is old and wise, so he may have seen this before.<br><br> You: Do you think I am ready to go alone?<br><br> Father: I know you are ready - take courage!<br><br> I must stay here to try and stop the spread of the disease.<br><br> Your father hands you an infected leaf from the wheat crop to show the king.<br><br> You pack your things, go to bed early, and wake up before dawn the next day to start your journey.</b>";
+   let prose1_4 =
+     '<b>You wake up before the sun rises and set out on your journey early in the day.<br><br> It is clear, sunny, and cool, with a light breeze from the direction of the sea, to the east.<br><br> As you look ahead at the winding road through the woods, you wonder what lies ahead - and what adventures await you.<br><br> After a few hours, you seee a man traveling alone, walking up the road towards you.<br><br>Man: I am sorry to impose, but do you have any food that you can spare? The road is longer than I thought, and this year the harvest was not so good!<br><br> You give the man what little you can afford to part with, and he is grateful.<br><br> It seems that your farm is not the only place seeing desperate times.<br><br> A few hours later, you are happy to find a group of people resting at the roadside.<br><br> The group is traveling to town, and they invite you to join them.<br><br> You happily agree, and soon you resume your journey, now with some companions for the road.</b>';
+   let prose1_5 =
+     "<b>As you travel along with your new companions, a light rain begins to fall. Close to nightfall, the rain becomes a downpour.<br><br> There is no shelter along the road, so your group decides to push on without rest.<br><br> You and your companions walk a long time through the frigid, rainy darkness.<br><br> After hours of walking through cold, rain, and wind, you are certain you can no longer endure the storm.<br><br> Just then, you see faint lights in the distance - lights from the town!<br><br> Close to midnight, you arrive at the edge of the town where the king's castle stands.<br><br> As you approach the gate, your clothes are soaking wet, you are tired from a long day of travel, and you are shivering with the dreadful midnight cold.</b>";
+   let prose1_6 =
+     "<b>After entering the town, your traveling companions ask you to stay with them at a local inn: The Gray Ghost Inn.<br><br> You decline, saying that you need to see the king right away.<br><br> You part ways with your traveling companions and bid them farewell.<br><br> Then, you begin the cold, dark, and rainy walk towards the castle - alone.<br><br> It is hard to see with no light, so you make slow progress through the dark, muddy streets of the town.<br><br>As you trudge through the mud, you can only hear the sounds of rain falling, distant thunder, and your own footsteps.<br><br> You walk for about 20 minutes until you find yourself in front of the king's castle.<br><br> To your surprise, you see a crowd of people standing just inside the main hall.</b>";
+   let prose1_7 =
+     "<b>You approach one of the men standing in the crowded hall and start a conversation.<br><br> You: This is a huge crowd - what is going on here, sir?<br><br> Man: We are waiting to see the king.<br><br> You: All of you? Why do you want to see the king?<br><br> Man: I am a farmer, and my potato crop is failing due to a disease. I have never seen anything like it before.<br><br> You: My father's wheat crop is infected with a disease too - how bad is it on your farm?<br><br> Man: Bad enough that I had to leave the farm behind and come here, just to wait around for hours to see the king!<br><br> You sit on the cold stone floor of the castle hall, with your back to the wall.<br><br> Some of the people from the crowd enter the castle over the next several hours - but it is a large group of people.<br><br>You try to get some sleep, but you have no luck as time passes with no rest for your weary soul.</b>";
+   let prose1_8 =
+     '<b>At daybreak, after hours of anxious waiting, you are exhausted.<br><br> You reason that there is no chance to see the king anytime soon.<br><br> You leave the castle hall and make your way to The Gray Ghost Inn, where your traveling companions are staying.<br><br> After walking and searching for a while, you find the inn and step up to the front door.</b>';
+   let prose1_9 =
+     '<b>As soon as you enter the inn, you are greeted by the sounds of numerous people talking while eating fresh-baked bread and drinking ale.<br><br> Despite the fact that you arrived early in the morning, the inn is packed full of travelers.<br><br> In fact, every chair at every table is full - except for one old man, who is sitting by himself at one weathered table in one dark corner of the common room.</b>';
+   let prose1_10 =
+     '<b>You see your traveling companions sitting at a table, so you stop over to say hello.<br><br> Then, you approach the table where the old man is sitting. <br><br> Old Man: I have been waiting for you.<br><br> Me: You have?</b>';
+   let prose1_11 =
+     '<b>Old Man: Why yes, of course!<br><br> I have been waiting a long time for someone clever to come along.<br><br> Me: Are you talking about me?<br><br> Am I really all that clever?<br><br> Old Man: I could have sworn you were, but now that you mention it, maybe not!<br><br> Will you allow me to test your abilities and find out for certain?</b>';
+   let prose1_Array = [
+     prose1_1,
+     prose1_2,
+     prose1_3,
+     prose1_4,
+     prose1_5,
+     prose1_6,
+     prose1_7,
+     prose1_8,
+     prose1_9,
+     prose1_10,
+     prose1_11,
+   ];
+   
+   //******************************CHAPTER 2*****************************
+   let prose2_1 =
+     "<b>Old Man: I knew you were clever - I am not often wrong about these things!<br><br> You: Not clever enough! I wish I could help save my father's farm - and all the other farms in the kingdom.<br><br> Old Man: Maybe you can ... yes, I think you are ready.<br><br> You: Ready for what, exactly?<br><br> Old Man: It's about time you found out.<br><br> I have an old friend in town here - he has a potion shop near the castle.<br><br> Go to see him - he might be able to help you with your farming problem.</b>";
+   let prose2_2 =
+     '<b>You leave The Gray Ghost Inn and make your way back towards the castle.<br><br> The day is sunny and clear - a welcome change from the  weather of the previous night.<br><br> After you arrive back at the castle, you look through nearby side alleys for the potion shop.<br><br> It seems to be well-hidden, so you finally decide to ask around until you find a woman who knows where the potion shop is.<br><br> Woman: Just watch out for the owner there at the potion shop, lad.<br><br> You: Why? What do you mean?<br><br>Woman: Well, I heard the potion shop owner can turn a person into any creature - or even a plant!  But I know you will be fine, dear.<br><br> You thank the woman for her directions and make your way to the potion shop - perhaps a bit less enthusiastic than before.</b>';
+   let prose2_3 =
+     '<b>The potion shop is not very pretty - it has rough wooden walls and a thatched living roof with plants growing on top of it.<br><br> Still, at least you found the place.<br><br> You muster your courage and walk towards the potion shop entrance.<br><br> As you walk, the only sound you hear is the crunching of gravel under your feet.<br><br> When you reach the entryway of the potion shop, you hear nothing at all.<br><br> Just as you are about to knock on the door, you hear someone call out from inside: Please come on in! </b>';
+   let prose2_4 =
+     "<b>You open the door and walk into the potion shop.<br><br> You see another old man wearing a cloak, sitting at a table.<br><br> The old man introduces himself to you.<br><br> Allen: I am Allen, master of potions and owner of this store! What brings you here today, lad?<br><br> You: Well, the old man at the inn sent me...<br><br> Allen: Old man? Hardly! I was already an old man when Zane was born! Is he still spending all of his time at the inn?<br><br> You: I do not know, but he was there when I walked in this morning.<br><br> Allen: Never mind, lad. It doesn't matter. Zane sent you here to see me, right? There must be a good reason for that!<br><br> Allen looks at you carefully, and after a moment of consideration, he speaks again.<br><br> Allen: Well, Zane got it right - you are clever. Although, that does not mean you are ready yet! Go ahead and take a look around - I need to get something for you.</b>";
+   let prose2_5 =
+     '<b>Allen walks into a back room and leaves you in the shop.<br><br> You look all around and see that there are shelves on every wall, lined with glass bottles of every color imaginable.<br><br> Inside of each glass bottle is some type of liquid - but you cannot tell what they are.<br><br> At last, you come upon a curious glass bottle.<br><br> It is impossible to tell how it was made, or where it came from.</b>';
+   let prose2_6 =
+     '<b>Allen walks back into the shop carrying a strange-looking glass bottle with a cork in the top.<br><br> Allen: You will need a potion to save the crops - and the kingdom!<br><br> You: But how did you know about the wheat crop disease?<br><br>Allen: I have my information sources, of course, but I cannot reveal them all to you - at least not now!<br><br> You: Ok...so, is the potion in that glass bottle?<br><br>    Allen: This is no time for so many questions, lad! You will need to go soon. But before I send you off with this, I need to make sure you are prepared. It is high time you learned how to make a potion. Are you ready for another challenge?<br><br> You: Another challenge? I guess we will see...</b>';
+   let prose2_Array = [prose2_1, prose2_2, prose2_3, prose2_4, prose2_5, prose2_6];
+   
+   //******************************CHAPTER 3*****************************
+   let prose3_1 = "<b>Allen: I just KNEW you were clever when you walked in the door of my potion shop - well done, lad!<br><br> Now I am confident that you are ready for your next quest.<br><br> You should set out for your father's farm right away!<br><br> You: Thank you Allen - but after those challenges, I do not think I can go on without some rest.<br><br> Allen: Nonsense! Take some of this potion - it will keep you awake and give you energy!<br><br>Allen hands you a small, clear glass bottle with a midnight-black liquid inside.<br><br> You: What is it? Essence of lion? Tiger's blood? Or...<br><br> Allen: No, lad, just a little coffee is all!</b>";
+   let prose3_2 = "<b>After you drink the coffee, you feel energized and ready to travel.<br><br> As you leave the potion shop, you swear you can sense someone watching, so you turn around in a hurry.<br><br> When you turn, you see Allen waving goodbye.<br><br> Then, you remember the glass  bottle he gave you and the potion he helped you to create.<br><br> You remove the potion bottle from your bag and take a moment to admire it.<br><br> As you examine the bottle, it seems to shine with some type of unnatural light.<br><br> You look up and see that Allen is gone - perhaps he went back inside the potion shop? There is no time to go back inside to find out - you must leave for home at once!<br><br> Still, you cannot shake the feeling of a sinister presence watching you...</b>";
+   let prose3_3 = "<b>After walking through the town for a while, you leave the castle behind in the distance.<br><br>You: Too bad I did not get to see the king this time - maybe on my next journey!<br><br> Soon you reach the edge of the town, and then you start on the road back home.<br><br> You are happy that the day is sunny and clear - and that you will soon be able to save your father's farm with your new potion.</b>";
+   let prose3_4 = "<b>As the day progresses, you quicken your pace to try to get home faster.<br><br> You are thinking about how to tell your parents about your adventure - and the puzzles you solved.<br><br> Late in the afternoon, a light fog begins to appear on the road and in the forest around you.<br><br> As the fog rolls in, it thickens and begins to chill your skin - and your heart.<br><br> The apprehension you felt outside the potion shop returns.<br><br> As the fog becomes heavier, so does your dread that someone is watching you.<br><br> You try to dismiss your fears and carry on, knowing that your father's farm needs the potion soon.<br><br> You quicken your pace to make the journey go faster - and to warm your body from the chilly fog.<br><br></b>";
+   let prose3_5 = "<b>As night falls, you are getting closer to home, but you are still miles away.<br><br> It will take a few hours to reach your father's farm from here.<br><br> The coffee Allen gave you has long since worn off, and you did not sleep much last night.<br><br> You are getting tired, the fog is thick, and the night is dark, so it is getting hard to see where you are going.<br><br> You  decide to rest after a long day of traveling alone.<br><br> You figure that when you wake up, you will be energized to finish your journey - and hopefully, the fog will be gone too!<br><br> Right now though, the fog is making you uneasy - you try to dismiss it again as a silly fear.<br><br> For some reason, you just cannot shake the feeling that someone is watching...</b>";
+   let prose3_6 = "<b>After finding a sheltered spot in the woods just off the road, you set up your small tent, pillow, and blanket.<br><br> You lie down and take out the glass bottle with the potion that Allen helped you to make.<br><br> It still has that faint glow, and you cannot help but smile, thinking about how lucky you were to find a cure for the wheat disease so fast.<br><br> As you lie down to sleep, your head is racing with thoughts of your adventures - and a bit of fear about being watched.<br><br> Still, you are grateful for everything you have seen and learned - and, you are so tired that you fall asleep almost immediately.<br><br></b>";
+   let prose3_7 = "<b>You are exhausted from the last couple of days, so you get a great sleep and do not wake up at all during the night.<br><br> When you get up, it is morning.<br><br> The fog is gone and the sun is shining, but it is still early in the day.<br><br> You pack up your pillow, blanket, and tent as fast as you can.<br><br> There is no time for breakfast - and besides, you can eat an apple or two on the road!<br><br> You are eager to get back home, and then you remember something your father taught you:<br><br> <i>Always check to make sure you have everything before you leave!</i><br><br> You check your bag to make sure you still have all of your belongings ...<br><br> It seems that you do, except for ...<br><br> Wait a minute ...<br><br> To your horror, you realize that the potion bottle is gone!<br><br> You search all around the area where you slept, frantic to find the bottle.<br><br> You look on the ground, in the grass, under the leaves, near some rocks, in your pockets (twice), and everywhere else you can think of.<br><br> After several minutes of searching, you are convinced that it is gone.<br><br> You: How can that be? I had the potion bottle last night - I remember looking at it right before I fell asleep!<br><br> Just then, you notice something in the road.</b>";
+   let prose3_8 = "<b>You walk into the road from the sheltered spot in the woods where you were sleeping.<br><br> You notice several sets of footprints left in the mud.<br><br> You are confident that these footprints were not in the road last night!<br><br> After examining the footprints for a while, you notice that they lead to your sheltered camping spot in the woods - and then back out again.<br><br> You: So someone <i>was</i> watching me the whole time - they must have followed me all the way from town!<br><br> Ugh, now I lost the potion - after all that running around!<br><br> Well, if bandits have taken my potion bottle, maybe I can get it back if I hurry!</b>";
+   let prose3_9 = "<b>The fog last night made the dirt road wet, turning it into mud.<br><br> Your shoes get dirty, but it is easy for you to follow the bandit tracks.<br><br> After following the tracks for an hour, you start to get annoyed and begin talking to yourself as you jog along down the road.<br><br> You: The nerve of those bandits!<br><br> How could they bring themselves to steal my potion - if they knew how badly I need it for the farm...<br><br> After another hour of jogging down the road, the bandit tracks end abruptly ... or so it seems at first glance.<br><br> You take a moment to inspect the road at the spot where the tracks end.<br><br> You can see broken branches where the bandits entered the dark woods.</b>";
+   let prose3_10 = "<b>You follow the broken branches into the woods for a while, until you see a clearing up ahead.<br><br> You can hear the faint sounds of men talking, so you begin to sneak towards the clearing, using trees as cover.<br><br> As you get closer, you can make out the words of their conversation.<br><br>Bandit 1: Yes, that's right - I heard the old potion master can change people!<br><br> That must be what the kid wanted - to change into someone else!<br><br> Well, now we have the potion, so we can change our faces.<br><br> The king and his men will never recognize us from that robbery last month!<br><br> Bandit 2: Well, don't hog all the potion, give us some too!<br><br> Bandit 1: Hold your horses - or, should I say, <i>hold the king's horses!</i><br><br> The bandits laugh, and as you sneak closer, you can see five of them around a small campfire that has been out for hours.<br><br> There are also five fine horses - they are much too nice for bandits, so they must belong to the king!<br><br> The biggest bandit, who seems to be the leader of the group, takes a long swig of the potion.<br><br> Then, the other bandits take small sips from the bottle.<br><br> Worried that the potion will run out, you decide to yell out to the bandits.</b>";
+   let prose3_11 = "<b>You: Hey! Leave some of that potion for me!<br><br> Startled, the bandits look over. Then, the big one calls out:<br><br>Bandit 1: Is that you, boy? I thought I recognized your voice!<br><br> Well, if you need some of the potion to become someone else, then come right on out!<br><br> There is still some left - but you might have to fight for it!<br><br> The other bandits laugh, taunting you to come out of the woods into the clearing.</b>";
+   let prose3_12 = "<b>Just as you are about to gather your courage and enter the clearing, you hear the bandit leader saying something.<br><br> Bandit 1: What did that old wizard do - what is this?<br><br> What is happening here?<br><br> As you peek out from behind a tree and look into the clearing, you simply cannot believe what you are seeing.<br><br> You think for a moment that your eyes are deceiving you, so you rub them and look again.<br><br> Yes, it looks like the bandits have disappeared.<br><br> However, there are now five tall trees (one much bigger than the others) where the bandits once stood.<br><br> You cannot help but think back to the words of the woman in the town.<br><br> You: So it IS true - Allen really CAN use potions to change people into other creatures or plants!<br><br> As strange as it seems, Allen's potion has turned the bandits into trees.<br><br> You: I guess it should have come with a label: for use on plants only!</b>";
+   let prose3_13 = "<b>You walk into the clearing, still amazed that the bandits are now trees.<br><br> It looks like the biggest bandit, the leader, became the biggest tree.<br><br> You look up at the trees and shout: Your days of <i>bandit-tree</i> are over! You should <i>branch out</i> into another profession! I <i>wood</i> like to help you, but I have a quest to complete! Now I am going to <i>leave</i> you here!<br><br>As you are looking up and slaying the trees with your jokes, something gleams in the sunlight and catches your eye.<br><br> You squint to see better, then cover your eyes with your hands to block some of the sunlight.<br><br> Your potion bottle is up at the end of one of the branches on the tallest bandit-tree!<br><br> You: Oh no - I have to climb all the way up there now?<br><br> You resign yourself to a long climb and make your way up the tree.<br><br>When you are up to the branch with the potion, you look over to see an owl sitting next to you.<br><br> To your surprise, the owl then speaks to you:<br><br> Owl: Are you ready for another challenge?<br><br> You: Not again - I thought I was done with challenges!<br><br> Owl: No, you are only just beginning - best get started!</b>";
+   let prose3_Array = [prose3_1, prose3_2, prose3_3, prose3_4, prose3_5, prose3_6, prose3_7, prose3_8, prose3_9, prose3_10, prose3_11, prose3_12, prose3_13];
+   //*******************************************************************
+   let prose_Array = [prose1_Array, prose2_Array, prose3_Array];
+   
+   //***********declare button text and array for display**********************
+   
+   //******************************CHAPTER 1*****************************
+   let buttonText1_1 = 'Click Here To Start<br> Your First Quest!';
+   let buttonText1_2 = 'Click Here To <br>Continue The Story.';
+   let buttonText1_3 = 'Click Here To <br>Start Your Journey.';
+   let buttonText1_4 = 'Click Here To Continue<br> On Your Journey.';
+   let buttonText1_5 = 'Click Here To <br>Enter The Town.';
+   let buttonText1_6 = 'Click Here To Ask<br> About The Crowd.';
+   let buttonText1_7 = 'Click Here To<br> Wait Around<br> Until Daybreak.';
+   let buttonText1_8 = 'Click Here To <br>Enter The Inn.';
+   let buttonText1_9 = 'Click Here <br>To Talk To<br> The Old Man.';
+   let buttonText1_10 = 'Click Here To Continue <br>With The Conversation.';
+   let buttonText1_11 = 'Click Here To Try A<br> Test Of Your Abilities.';
+   let buttonText1_Array = [
+     buttonText1_1,
+     buttonText1_2,
+     buttonText1_3,
+     buttonText1_4,
+     buttonText1_5,
+     buttonText1_6,
+     buttonText1_7,
+     buttonText1_8,
+     buttonText1_9,
+     buttonText1_10,
+     buttonText1_11,
+   ];
+   
+   //******************************CHAPTER 2*****************************
+   let buttonText2_1 = 'Click Here To Look<br> For The Potion Shop';
+   let buttonText2_2 = 'Click Here To Approach<br> The Potion Shop';
+   let buttonText2_3 = 'Click Here To Enter<br> The Potion Shop';
+   let buttonText2_4 = 'Click Here To Look <br> Around The Potion Shop';
+   let buttonText2_5 = 'Click Here To <br> Wait For Allen';
+   let buttonText2_6 = 'Click Here To Try A<br> Test Of Your Abilities.';
+   let buttonText2_Array = [
+     buttonText2_1,
+     buttonText2_2,
+     buttonText2_3,
+     buttonText2_4,
+     buttonText2_5,
+     buttonText2_6,
+   ];
+   
+   //******************************CHAPTER 3*****************************
+   let buttonText3_1 = 'Click Here To Drink<br> The Coffee Potion';
+   let buttonText3_2 = 'Click Here To Begin<br> The Journey Home';
+   let buttonText3_3 = 'Click Here To Leave<br> Town For The Road';
+   let buttonText3_4 = 'Click Here To Push<br> On Through The Fog';
+   let buttonText3_5 = 'Click Here To Set Up<br> Camp For The Night';
+   let buttonText3_6 = 'Click Here To Finally<br> Get A Good Sleep';
+   let buttonText3_7 = 'Click Here To<br> Check The Road';
+   let buttonText3_8 = 'Click Here To Follow<br> The Bandit Tracks';
+   let buttonText3_9 = 'Click Here To Enter<br> The Dark Woods';
+   let buttonText3_10 = 'Click Here To Yell<br> To The Bandits';
+   let buttonText3_11 = 'Click Here To<br> Enter The Clearing';
+   let buttonText3_12 = 'Click Here To Walk<Br> Up To The Trees';
+   let buttonText3_13 = 'Click Here To Try A<br> Test Of Your Abilities';
+   
+   let buttonText3_Array = [
+     buttonText3_1,
+     buttonText3_2,
+     buttonText3_3,
+     buttonText3_4,
+     buttonText3_5,
+     buttonText3_6,
+     buttonText3_7,
+     buttonText3_8,
+     buttonText3_9,
+     buttonText3_10,
+     buttonText3_11,
+     buttonText3_12,
+     buttonText3_13,
+   ];
+   //********************************************************************
+   let buttonText_Array = [buttonText1_Array, buttonText2_Array, buttonText3_Array];
+   
+   //*********declare audio URLs and array for music/sounds************************
+   
+   //******************************CHAPTER 1*****************************
+   let audioSound1_1 =
+     'https://upload.wikimedia.org/wikipedia/commons/6/6a/Good_King_Wenceslas_-_Concert_Band_-_United_States_Air_Force_Band.mp3'; //castle song for intro screen
+   let audioSound1_2 =
+     'https://upload.wikimedia.org/wikipedia/commons/e/e9/Elgar%3B_Enigma_variations%2C_Theme_VIII._W.N.ogg'; //farming theme
+   let audioSound1_3 =
+     'https://upload.wikimedia.org/wikipedia/commons/4/48/Ludwig_van_Beethoven_-_sonata_no._14_in_c_sharp_minor_%27moonlight%27%2C_op._27_no._2_-_i._adagio_sostenuto.ogg#t=4'; //wheat disease the
+   let audioSound1_4 =
+     'https://vmirror.imslp.org/files/imglnks/usimg/4/4f/IMSLP110170-PMLP62816-invitation.mp3'; //invitation to travel
+   let audioSound1_5 =
+     'https://upload.wikimedia.org/wikipedia/commons/4/42/Rain_and_thunder.ogg'; //rain and thunder
+   let audioSound1_6 =
+     'https://upload.wikimedia.org/wikipedia/commons/7/7c/Rain_on_a_veranda_and_t.ogg'; //rain and thunder 2
+   let audioSound1_7 =
+     'https://upload.wikimedia.org/wikipedia/commons/a/a9/360703_eguobyte_large-crowd-medium-distance-stereo.wav'; //crowd of people talking
+   let audioSound1_8 =
+     'https://upload.wikimedia.org/wikipedia/commons/e/e7/Elgar%3B_Enigma_variations%2C_Theme_IX._Nimrod.ogg'; //castle hall theme
+   let audioSound1_9 =
+     'https://upload.wikimedia.org/wikipedia/commons/b/b5/Restaurant_ambience.ogg'; //inside the inn the next morning
+   let audioSound1_10 =
+     'https://upload.wikimedia.org/wikipedia/commons/9/91/US_Marine_Band_Introduction_and_Allegro_%28Ravel%29.opus'; //meeting the old man Zane
+   let audioSound1_11 =
+     'https://upload.wikimedia.org/wikipedia/commons/b/b7/Tchaikovsky%2C_Symphony_No._6_In_B_Minor%2C_Op._74%2C_%27Pathetique%27_-_I._Adagio%2C_Allegro_Non_Troppo.ogg#t=3'; //first puzzle challenge from Zane
+   let audioSound1_Array = [
+     audioSound1_1,
+     audioSound1_2,
+     audioSound1_3,
+     audioSound1_4,
+     audioSound1_5,
+     audioSound1_6,
+     audioSound1_7,
+     audioSound1_8,
+     audioSound1_9,
+     audioSound1_10,
+     audioSound1_11,
+   ];
+   
+   //******************************CHAPTER 2*****************************
+   let audioSound2_1 =
+     'https://upload.wikimedia.org/wikipedia/commons/a/aa/Tchaikovsky%2C_Symphony_No._6_in_B_minor%2C_Op._74%2C_%27Pathetique%27_-_II._Allegro_con_gracia.ogg#t=1'; // Zane gives 2nd quest
+   let audioSound2_2 =
+     'https://upload.wikimedia.org/wikipedia/commons/2/2b/Mozart_Concerto_No.16_in_D_for_piano_II._Andante_%28Mozart%29_European_Archive.ogg'; //walking to the potion shop
+   let audioSound2_3 =
+     'https://upload.wikimedia.org/wikipedia/commons/0/0e/Mozart_Symphony_No.19_in_E_flat_major_II._Andantino_grazioso_%28Mozart%29_European_Archive.ogg#t=1'; //just outside the potion shop
+   let audioSound2_4 =
+     'https://upload.wikimedia.org/wikipedia/commons/4/45/Mozart_Concerto_pour_piano_No.19_F_major_I._Allegro_%28Mozart%29_European_Archive.ogg#t=1'; //meeting Allen in the potion shop
+   let audioSound2_5 =
+     'https://upload.wikimedia.org/wikipedia/commons/e/e8/Mozart_Piano_Concerto_No._15_in_B_flat_major_K450_III._Allegro_%28Mozart%29_European_Archive.ogg#t=1'; //looking around the potion shop
+   let audioSound2_6 =
+     'https://upload.wikimedia.org/wikipedia/commons/f/f7/Mozart_Symphony_No.34_C_major_III._Finale_%28Allegro_vivace%29_%28Mozart%29_European_Archive.ogg'; //2nd puzzle challenge from Allen
+   let audioSound2_Array = [
+     audioSound2_1,
+     audioSound2_2,
+     audioSound2_3,
+     audioSound2_4,
+     audioSound2_5,
+     audioSound2_6,
+   ];
+   
+   //******************************CHAPTER 3*****************************
+   let audioSound3_1 = 'https://upload.wikimedia.org/wikipedia/commons/1/19/04_Horenstein_9._Beethoven_Pantheon_XP_2550_-_4._satz.flac#t=480';
+   let audioSound3_2 = 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor%2C_op._67_-_ii._andante_con_moto.ogg';
+   let audioSound3_3 = 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Robinson%27s_Grand_Entry_March_-_Concert_Band_-_United_States_Air_Force_Band.mp3';
+   let audioSound3_4 = 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Musopen_-_In_the_Hall_Of_The_Mountain_King.ogg';
+   let audioSound3_5 = 'https://upload.wikimedia.org/wikipedia/commons/1/14/Siegfrieds_funeral_march%2C_excerpt.flac';
+   let audioSound3_6 = 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Shenandoah_-_United_States_Air_Force_Academy_Band.mp3';
+   let audioSound3_7 = 'https://upload.wikimedia.org/wikipedia/commons/e/e6/Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor%2C_op._67_-_i._allegro_con_brio.ogg';
+   let audioSound3_8 = 'https://ia600905.us.archive.org/2/items/DanseMacabreOp.40/Danse%20Macabre%2C%20Op.%2040.mp3#t=21';
+   let audioSound3_9 = 'https://upload.wikimedia.org/wikipedia/commons/e/ea/The_United_States_Army_Old_Guard_Fife_and_Drum_Corps_-_07_-_Soldiers_Farewell_FanfareMontezumaMarch_of_WarWindsor_Park.ogg';
+   let audioSound3_10 = 'https://upload.wikimedia.org/wikipedia/commons/5/5b/Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor%2C_op._67_-_iii._allegro.ogg';
+   let audioSound3_11 = 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Illinois_Brass_Band_-_02_-_Bach_Toccata_and_Fugue_in_D_Minor.ogg';
+   let audioSound3_12 = 'https://commons.wikimedia.org/wiki/File:Ludwig_van_Beethoven_-_symphony_no._5_in_c_minor,_op._67_-_iv._allegro.ogg';
+   let audioSound3_13 = 'https://upload.wikimedia.org/wikipedia/commons/6/63/Beethoven%2C_Sonata_No._8_in_C_Minor_Pathetique%2C_Op._13_-_II._Adagio_cantabile.ogg';
+   
+   let audioSound3_Array = [
+     audioSound3_1,
+     audioSound3_2,
+     audioSound3_3,
+     audioSound3_4,
+     audioSound3_5,
+     audioSound3_6,
+     audioSound3_7,
+     audioSound3_8,
+     audioSound3_9,
+     audioSound3_10,
+     audioSound3_11,
+     audioSound3_12,
+     audioSound3_13,
+   ];
+   
+   //********************************************************************
+   let audioSound_Array = [audioSound1_Array, audioSound2_Array, audioSound3_Array];
+   
+   let audioVolume1_Array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+   let audioVolume2_Array = [1, 1, 1, 1, 1, 1];
+   let audioVolume3_Array = [0.3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+   let audioVolume_Array = [audioVolume1_Array, audioVolume2_Array, audioVolume3_Array];
+   
+   //some good audio to draw from:
+   //Richard Strauss - "Also Sprach Zarathustra" (2001: A Space Odyssey Theme)
+   //George Frideric Handel - "Zadok the Priest"
+   //Johann Strauss II - "The Blue Danube"
+   //Edward Elgar - "Pomp and Circumstance March No. 1"
+   //Pyotr Ilyich Tchaikovsky - "1812 Overture"
+   //Gustav Holst - "Mars, the Bringer of War" from The Planets
+   
+   //bach cantatas for majestic/grand
+   
+   document.getElementById('storyWindow').style.display = 'none'; //hide story window until it is time to display it
+   document.getElementById('puzzleWindow').style.display = 'none'; //hide puzzle window until it is time to display it
+   document.getElementById('settingsWindow').style.display = 'none'; //hide settings window until it is time to display it
+   let activeWindow = ['introWindow']; //keeps track of which window is active (introWindow, storyWindow, or puzzleWindow)
+   
+   //can hiding all of this stuff be one function, perhaps?
+   document.getElementById("settings").style.display = 'none';
+   document.getElementById('restartChapter').style.display = 'none';
+   document.getElementById('restartChapterButtons').style.display = 'none';
+   document.getElementById('chapterSettingsText').style.display = 'none';
+   document.getElementById('quitToStartButtons').style.display = 'none';
+   document.getElementById('quitToStartButton').style.display = 'none';
+   document.getElementById('restartPuzzleButtons').style.display = 'none';
+   document.getElementById("about").style.display = "none";
+   
+   let myChapterIndex = [0]; //chapter index starts at 0 for chapter 1; update each new chapter
+   let myPageIndex = [0, 0, 0, 0, 0, 0, 0, 0]; //page index for each chapter starts at 0; update each time next button is clicked. use chapter index to get correct chapter (chapter 1 - 1 = 0)
+   
+   var x = document.getElementById('myAudio');
+   updateAudioSettings();
+   
+   //this function starts the game (first chapter opening) from the intro screen (start menu)
+   function startGame() {
+     document.getElementById('introWindow').style.display = 'none';
+     document.getElementById('puzzleWindow').style.display = 'none';
+     document.getElementById('storyWindow').style.display = 'block';
+     activeWindow[0] = 'storyWindow';
+     document.getElementById("settings").style.display = 'block';
+   
+     //audio elements
+     chooseDisplayPage();
+     updateAudioSettings();
+     //x.removeAttribute('controls'); //this hides the audio controls
+   }
+   
+   //this function updates audio settings
+   function updateAudioSettings() {
+     x.pause();
+     x.volume =
+       audioVolume_Array[myChapterIndex[0]][myPageIndex[myChapterIndex[0]]];
+     x.play();
+   }
+   
+   //this function increments the currentPage by 1 when the next page button is clicked
+   function updatePageIndex() {
+     myPageIndex[myChapterIndex[0]] += 1; //increment page counter variable
+     if(myPageIndex[myChapterIndex[0]] === prose_Array[myChapterIndex[0]].length){
+       document.getElementById('storyWindow').style.display = 'none';
+       document.getElementById('puzzleWindow').style.display = 'block';
+       activeWindow[0] = 'puzzleWindow';
+     } else {
+       chooseDisplayPage(); //call function to set image, text, button, audio
+       updateAudioSettings(); //update audio
+     }
+     window.scrollTo(0, 0);
+   }
+   
+   //this function tells us which page (image, buttons, text, etc.) to display on screen for storyWindow
+   function chooseDisplayPage() {
+     document.getElementById('pictureDisplayed').src =
+       pictureURL_Array[myChapterIndex[0]][myPageIndex[myChapterIndex[0]]];
+     document.getElementById('imageCaptionText').innerHTML =
+       prose_Array[myChapterIndex[0]][myPageIndex[myChapterIndex[0]]];
+     document.getElementById('nextButton').innerHTML =
+       buttonText_Array[myChapterIndex[0]][myPageIndex[myChapterIndex[0]]];
+     document.getElementById('myAudio').src =
+       audioSound_Array[myChapterIndex[0]][myPageIndex[myChapterIndex[0]]];
+   }
+   
+   //this function lets you skip ahead to the end of the current chapter (a developer tool for faster testing & troubleshooting)
+   function skipToEndOfChapter() {
+     myPageIndex[myChapterIndex[0]] = prose_Array[myChapterIndex[0]].length - 1; //set page index for last page of current chapter
+     chooseDisplayPage(); //update displayed page
+     updateAudioSettings();
+     window.scrollTo(0, 0);
+   }
+   
+   //this function lets you skip ahead to the start of the next chapter (a developer tool for faster testing & troubleshooting)
+   function skipChapter() {
+     document.getElementById(challengeWindowNameArray[myChapterIndex[0]]).style.display = 'none';
+     myChapterIndex[0]++; //increment chapter
+     document.getElementById(challengeWindowNameArray[myChapterIndex[0]]).style.display = 'block';
+     document.getElementById("subheader").innerHTML = "Chapter " + (myChapterIndex[0]+1).toString() + " Puzzle Challenge!";
+     myPageIndex[myChapterIndex[0]] = 0; //set page index for new chapter to zero
+     chooseDisplayPage(); //update displayed page
+     updateAudioSettings();
+     window.scrollTo(0, 0);
+   }
+   
+   //this function lets you skip ahead to the start of the next puzzle challenge (a developer tool for faster testing & troubleshooting)
+   function skipPuzzle(){
+       document.getElementById(challengeWindowNameArray[myChapterIndex[0]]).style.display = 'none';
+       myChapterIndex[0]++; //update current Chapter index
+       document.getElementById(challengeWindowNameArray[myChapterIndex[0]]).style.display = 'block';
+       document.getElementById("subheader").innerHTML = "Chapter " + (myChapterIndex[0]+1).toString() + " Puzzle Challenge!";
+       myPageIndex[myChapterIndex[0]] = 0;
+       puzzleCounter[0] = 0; //reset puzzle counter for next puzzle
+       document.getElementById('storyWindow').style.display = 'block'; //show storyWindow
+       document.getElementById('puzzleWindow').style.display = 'none'; //hide puzzleWindow
+       activeWindow[0] = 'storyWindow';
+       chooseDisplayPage();
+       updateAudioSettings();
+       window.scrollTo(0, 0);
+     //need to implement this function once more puzzles exist and infrastructure is upgraded
+   }
+   
+   //this function shows the settings menu (for volume/mute, fullscreen, save, quit restart, etc. options)
+   function showSettings() {
+     document.getElementById('settingsWindow').style.display = 'block'; //hide settings window until it is time to display it
+     document.getElementById('storyWindow').style.display = 'none'; //hide settings window until it is time to display it
+     document.getElementById('puzzleWindow').style.display = 'none'; //hide settings window until it is time to display it
+     document.getElementById('introWindow').style.display = 'none'; //hide intro window until it is time to display it
+   
+     if (activeWindow[0] === 'storyWindow') {
+       document.getElementById('restartChapter').style.display = 'block';
+       document.getElementById('chapterSettingsText').style.display = 'block';
+     } else {
+       document.getElementById('restartChapter').style.display = 'none';
+       document.getElementById('chapterSettingsText').style.display = 'none';
+     }
+   
+     if (activeWindow[0] === 'puzzleWindow') {
+       document.getElementById('restartPuzzle').style.display = 'block';
+       document.getElementById('chapterSettingsText').style.display = 'block';
+     } else {
+       document.getElementById('restartPuzzle').style.display = 'none';
+       document.getElementById('chapterSettingsText').style.display = 'none';
+     }
+   
+     if (activeWindow[0] === 'introWindow') {
+       document.getElementById('quitToStartButton').style.display = 'none';
+     } else {
+       document.getElementById('quitToStartButton').style.display = 'block';
+     }
+     
+     document.getElementById('settingsWindow').scrollIntoView(true);
+   }
+   
+   //this function closes the settings menu by hiding the settingsWindow and restoring the active game window
+   function closeSettingsWindow() {
+     hideRestartChapterButtons();
+     hideRestartPuzzleButtons();
+     hideQuitToStartButtons();
+     document.getElementById('settingsWindow').style.display = 'none';
+     if (activeWindow[0] === 'storyWindow') {
+       document.getElementById('storyWindow').style.display = 'block';
+     } else if (activeWindow[0] === 'puzzleWindow') {
+       document.getElementById('puzzleWindow').style.display = 'block';
+     } else {
+       document.getElementById('introWindow').style.display = 'block';
+     }
+     window.scrollTo(0, 0);
+   }
+   
+   //this function displays the restart chapter confirmation text and buttons
+   function showRestartChapterButtons() {
+     document.getElementById('restartChapterButtons').style.display = 'block';
+     document.getElementById('restartChapterY').scrollIntoView();
+   }
+   
+   //this function hides the restart chapter confirmation text/buttons div without restarting
+   function hideRestartChapterButtons() {
+     document.getElementById('restartChapterButtons').style.display = 'none';
+   }
+   
+   //this function restarts the current chapter (page index to zero)
+   function restartChapter() {
+     hideRestartChapterButtons();
+     myPageIndex[myChapterIndex[0]] = 0;
+     chooseDisplayPage();
+     updateAudioSettings();
+     closeSettingsWindow();
+     window.scrollTo(0, 0);
+   }
+   
+   //this function displays the restart puzzle confirmation text and buttons
+   function showRestartPuzzleButtons() {
+     document.getElementById('restartPuzzleButtons').style.display = 'block';
+     document.getElementById('restartPuzzleY').scrollIntoView();
+   }
+   
+   //this function hides the restart puzzle confirmation text/buttons div without restarting
+   function hideRestartPuzzleButtons() {
+     document.getElementById('restartPuzzleButtons').style.display = 'none';
+   }
+   
+   //this function restarts the current puzzle (puzzleCounter to zero)
+   function restartPuzzle() {
+     closeSettingsWindow();
+     activeWindow[0] = 'puzzleWindow';
+     hideRestartPuzzleButtons();
+     puzzleCounter[0] = 0;
+     setButtonValues();
+     resetButtonValues();
+     document.getElementById('nextPuzzleButton').style.display = 'none';
+     hideAllHints(); //set all hints to hidden
+     document.getElementById('Congratulations').innerHTML =
+       "<b>Click the 'Submit' button when ready.</b>";
+     window.scrollTo(0, 0);
+     document.getElementById('myAudio').src =
+       audioSound_Array[0][10];
+     x.play();
+   }
+   
+   //this function shows the quit to start confirmation text and buttons
+   function showQuitToStartButtons() {
+     document.getElementById('quitToStartButtons').style.display = 'block';
+     document.getElementById('quitToStartY').scrollIntoView();
+   }
+   
+   //this function hides the quit to start confirmation text and buttons
+   function hideQuitToStartButtons() {
+     document.getElementById('quitToStartButtons').style.display = 'none';
+   }
+   
+   //this function closes the settings menu and quits to the start/intro screen
+   function quitToStart() {
+     hideQuitToStartButtons();
+     myChapterIndex[0] = 0;
+     for(g = 0; g < challengeWindowNameArray.length; g++){
+       myPageIndex[g] = 0;
+     }
+     puzzleCounter[0] = 0;
+     activeWindow[0] = 'introWindow';
+     document.getElementById("settings").style.display = 'none';
+     document.getElementById('myAudio').src =
+       'https://upload.wikimedia.org/wikipedia/commons/4/41/Aida-Trompeten.ogg';
+     updateAudioSettings();
+     closeSettingsWindow();
+     window.scrollTo(0, 0);
+   }
+   
+   //this function shows the About menu from the start menu
+   function showAbout() {
+     document.getElementById("about").style.display = "block";
+     document.getElementById("introWindow").style.display = "none";
+     window.scrollTo(0, 0);
+   }
+   
+   //this function returns to the Intro Start Menu from the About Menu
+   function returnToStartMenuFromAbout(){
+     document.getElementById("about").style.display = "none";
+     document.getElementById("introWindow").style.display = "block";
+     window.scrollTo(0, 0);
+   }
+   
+   //this function shows the Share menu from the start menu
+   function showShare() {
+     //implement toggle of Share Menu
+   }
+   
+   //this function shows the Credits menu from the start menu
+   function showCredits() {
+     //implement toggle of Credits Menu
+   }
+   
+   //this function toggles audio (mute or unmute) depending on current boolean value
+   function toggleMuteAudio() {
+     if (x.muted) {
+       x.muted = false;
+       document.getElementById('audioMutedStatus').src =
+         'https://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg';
+     } else {
+       x.muted = true;
+       document.getElementById('audioMutedStatus').src =
+         'https://upload.wikimedia.org/wikipedia/commons/a/a8/Audio_Mute_%2889634%29_-_The_Noun_Project.svg';
+     }
+   }
+   
+   //*******************END OF SCRIPT FOR CHAPTERS**********************************
+   
+   
+   //***********************SCRIPT FOR PUZZLES************************
+   let challengeWindowNameArray = ["challenge1", "challenge2", "challenge3"];
+   
+   for(i = 0; i < challengeWindowNameArray.length; i++){
+     document.getElementById(challengeWindowNameArray[i]).style.display = 'none';
+   } //hide all challenge windows to start
+   
+   document.getElementById(challengeWindowNameArray[0]).style.display = 'block'; //reveal first challenge window
+   
+   //***********************SCRIPT FOR PUZZLE 1************************
+   let puzzleCounter = [0]; //start with the first puzzle (at zero) and count  up.
+   let goalArray = [
+     [3, 6, 10, 4, 4],
+     [5, 4, 9, 4, -14],
+     [7, 6, 14, -2, 0],
+   ]; //array of arrays for goal values: left, then middle, then right
+   let effectArrayLeft = [
+     [1, 1, 1, 1, 8],
+     [0, 1, 2, 1, -7],
+     [0, 0, 3, -2, -2],
+   ]; //array of arrays for effect values, left button
+   let effectArrayMiddle = [
+     [0, 0, 2, 3, 5],
+     [1, 1, 2, -3, -6],
+     [0, 1, 2, 2, -9],
+   ]; //array of arrays for effect values, left button
+   let effectArrayRight = [
+     [0, 1, 2, -4, -4],
+     [0, 0, 1, 5, 3],
+     [1, 1, 2, -1, 5],
+   ]; //array of arrays for effect values, left button
+   let effectArray = [effectArrayLeft, effectArrayMiddle, effectArrayRight];
+   document.getElementById('nextPuzzleButton').style.display = 'none';
+   
+   //hint text arrays (hinti_j_k: i = chapter, j = puzzle, k = hint)
+   
+   //challenge 1 hints
+   let hint1_1_1 = 'Press the left button three times.';
+   let hint1_1_2 = 'Press the middle button five times.';
+   let hint1_1_3 = 'Press the right button seven times.';
+   let hintArray1_1 = [hint1_1_1, hint1_1_2, hint1_1_3];
+   
+   let hint1_2_1 = 'What happens when you press each button once?';
+   let hint1_2_2 = 'What happens when you press each button twice?';
+   let hint1_2_3 = 'After using hint 2, you only need the right button.';
+   let hintArray1_2 = [hint1_2_1, hint1_2_2, hint1_2_3];
+   
+   let hint1_3_1 =
+     'The middle goal is odd, so you must use the right button at least once.';
+   let hint1_3_2 = 'Use the right button three times.';
+   let hint1_3_3 = 'After using hint 2, how can you add four to the left button?';
+   let hintArray1_3 = [hint1_3_1, hint1_3_2, hint1_3_3];
+   
+   let hint1_4_1 =
+     'The left and middle buttons together leave the right unchanged.';
+   let hint1_4_2 = 'Use the right button two times.';
+   let hint1_4_3 = 'Use hint 1 repeatedly after using hint 2.';
+   let hintArray1_4 = [hint1_4_1, hint1_4_2, hint1_4_3];
+   
+   let hint1_5_1 = 'The middle and right buttons together add 1 to the left.';
+   let hint1_5_2 = 'Use hint 1 four times.';
+   let hint1_5_3 = 'Left once and right twice leaves left unchanged.';
+   let hintArray1_5 = [hint1_5_1, hint1_5_2, hint1_5_3];
+   
+   let hintArray1 = [
+     hintArray1_1,
+     hintArray1_2,
+     hintArray1_3,
+     hintArray1_4,
+     hintArray1_5,
+   ];
+   
+   //challenge 2 hints
+   let hint2_1_1 = 'Each color total should be half of the starting total.';
+   let hint2_1_2 = 'You only need two brown buttons to get the right totals.';
+   let hint2_1_3 = 'Start by changing the largest number to brown. How much more do you need?';
+   let hintArray2_1 = [hint2_1_1, hint2_1_2, hint2_1_3];
+   
+   let hint2_2_1 = 'You only need three brown buttons to get the right totals.';
+   let hint2_2_2 = 'Start by changing the 2nd largest number to brown. How much more do you need?';
+   let hint2_2_3 = 'Which two numbers add up to the 2nd largest number?';
+   let hintArray2_2 = [hint2_2_1, hint2_2_2, hint2_2_3];
+   
+   let hint2_3_1 = 'You need four brown buttons to get the right totals.';
+   let hint2_3_2 = 'Start by changing the largest number to brown. How much more do you need?';
+   let hint2_3_3 = 'After Hint 2, change the 3rd largest number to brown. How much more do you need?';
+   let hintArray2_3 = [hint2_3_1, hint2_3_2, hint2_3_3];
+   
+   let hint2_4_1 = 'You need four brown buttons to get the right totals.';
+   let hint2_4_2 = 'Make one of the negative numbers brown to get the right totals.';
+   let hint2_4_3 = 'Leave the largest number as blue to get the right totals.';
+   let hintArray2_4 = [hint2_4_1, hint2_4_2, hint2_4_3];
+   
+   let hint2_5_1 = 'You need four brown buttons to get the right totals.';
+   let hint2_5_2 = 'Make two of the negative numbers brown to get the right totals.';
+   let hint2_5_3 = 'Start by changing -15 to brown. How much more do you need?';
+   let hintArray2_5 = [hint2_5_1, hint2_5_2, hint2_5_3];
+   
+   let hintArray2 = [
+     hintArray2_1,
+     hintArray2_2,
+     hintArray2_3,
+     hintArray2_4,
+     hintArray2_5,
+   ];
+   
+   //challenge 3 hints
+   let hint3_1_1 = '';
+   let hint3_1_2 = '';
+   let hint3_1_3 = '';
+   let hintArray3_1 = [hint3_1_1, hint3_1_2, hint3_1_3];
+   
+   let hint3_2_1 = '';
+   let hint3_2_2 = '';
+   let hint3_2_3 = '';
+   let hintArray3_2 = [hint3_2_1, hint3_2_2, hint3_2_3];
+   
+   let hint3_3_1 = '';
+   let hint3_3_2 = '';
+   let hint3_3_3 = '';
+   let hintArray3_3 = [hint3_3_1, hint3_3_2, hint3_3_3];
+   
+   let hint3_4_1 = '';
+   let hint3_4_2 = '';
+   let hint3_4_3 = '';
+   let hintArray3_4 = [hint3_4_1, hint3_4_2, hint3_4_3];
+   
+   let hint3_5_1 = '';
+   let hint3_5_2 = '';
+   let hint3_5_3 = '';
+   let hintArray3_5 = [hint3_5_1, hint3_5_2, hint3_5_3];
+   
+   let hintArray3 = [
+     hintArray3_1,
+     hintArray3_2,
+     hintArray3_3,
+     hintArray3_4,
+     hintArray3_5,
+   ];
+   
+   let hintArray = [hintArray1, hintArray2, hintArray3];
+   
+   let buttonValues = [0, 0, 0];
+   let effectStrings = ['', '', ''];
+   
+   //this function sets the values of all three buttons for challenge 1, including goal value, current value, and effects
+   function setButtonValues() {
+     for (i = 0; i < 3; i++) {
+       for (j = 0; j < 3; j++) {
+         effectStrings[j] += effectArray[j][i][puzzleCounter[0]];
+         if (i != 2) {
+           effectStrings[j] += ', ';
+         }
+       }
+     }
+   
+     buttonNameArray = ['leftButton', 'middleButton', 'rightButton'];
+     for (z = 0; z < 3; z++) {
+       document.getElementById(buttonNameArray[z]).innerHTML =
+         '<u>Goal Value:</u> ' +
+         goalArray[z][puzzleCounter[0]] +
+         '<br><br> Current Value: ' +
+         buttonValues[z] +
+         '<br><br> <u>Effect:</u><br> ' +
+         effectStrings[z];
+   
+       effectStrings[z] = '';
+     }
+   }
+   
+   //this function updates button values for challenge 1 puzzles on click, based on input (0 = left, 1 = middle, 2 = right)
+   function updateButtonValuesPuzzle1(buttonIndicator) {
+     for (l = 0; l < 3; l++) {
+       buttonValues[l] += effectArray[buttonIndicator][l][puzzleCounter[0]];
+     }
+     setButtonValues();
+   }
+   
+   //this function resets all buttons/values when reset button is clicked
+   function resetButtonValues() {
+     switch (myChapterIndex[0]){
+       case 0:
+         resetButtonValues1();
+         break;
+       case 1:
+         resetButtonValues2();
+         break;
+       default:
+         //do nothing?
+     }
+   }
+   
+   //reset challenge 1 button values to zero
+   function resetButtonValues1(){
+     for (p = 0; p < 3; p++) {
+       buttonValues[p] = 0;
+     }
+     setButtonValues();
+   }
+   
+   //reset challenge 2 buttons to blue and totals
+   function resetButtonValues2(){
+     for(i = 0; i < 8; i++){
+       buttonColorArrayPuzzle2[i] = "blue";
+       document.getElementById(buttonNameArrayPuzzle2[i]).style.borderColor = "#008CBA";
+     }
+     updateButtonValues();
+     calculateButtonTotalsPuzzle2();
+     updateButtonTotalsDisplay();
+   }
+   
+   //this function shows a single hint, (toggles visibility and button text) given an index (1 to 3)
+   function showHint(hintToShow){
+     document.getElementById('Hint' + hintToShow).innerHTML =
+       '<i>Hint ' + hintToShow + ': ' +
+       hintArray[myChapterIndex[0]][puzzleCounter[0]][hintToShow - 1] +
+       '</i>';
+     document.getElementById('hint' + hintToShow + 'Button').innerHTML = '<b>Hide Hint ' + hintToShow + '</b>';
+   }
+   
+   //this function hides a single hint, (toggles visibility and button text) given an index (1 to 3)
+   function hideHint(hintToHide){
+     document.getElementById('Hint' + hintToHide).innerHTML = '';
+     document.getElementById('hint' + hintToHide + 'Button').innerHTML = 'Show Hint ' + hintToHide;
+   }
+   
+   //this function toggles the display of the hint indicated as the argument (1, 2, or 3)
+   function toggleHint(h){
+     if (document.getElementById('hint' + h + 'Button').innerHTML == 'Show Hint ' + h) {
+       showHint(h);
+     } else {
+       hideHint(h);
+     }
+     document.getElementById('Hint' + h).scrollIntoView();
+   }
+   
+   //this function hides all 3 hints (toggles visibility and button text)
+   function hideAllHints() {
+     for(hintIndex = 0; hintIndex < 3; hintIndex++){
+       hideHint(hintIndex + 1);
+     }
+   }
+   
+   //check solutions for each puzzle, by chapter/quest (chapterIndex)
+   function checkSolutions() {
+     switch (myChapterIndex[0]){
+       case 0:
+         checkSolutions1();
+         break;
+       case 1:
+         checkSolutions2();
+         break;
+       default:
+         //do nothing?
+     }
+   }
+   
+   //check solutions for puzzle 1 (linear combos)
+   function checkSolutions1() {
+     if (
+       buttonValues[0] === goalArray[0][puzzleCounter[0]] &&
+       buttonValues[1] === goalArray[1][puzzleCounter[0]] &&
+       buttonValues[2] === goalArray[2][puzzleCounter[0]]
+     ) {
+       if (puzzleCounter[0] === 4) {
+         document.getElementById('Congratulations').innerHTML =
+           '<b>You ARE clever after all! It seems you are ready for your next quest...</b>';
+         document.getElementById('nextPuzzleButton').innerHTML =
+           'Click Here To<br>Begin The 2nd Quest!';
+         document.getElementById('myAudio').src =
+           'https://upload.wikimedia.org/wikipedia/commons/9/91/Ride_of_the_Valkyries.ogg';
+         x.play();
+       } else {
+         document.getElementById('Congratulations').innerHTML =
+           '<b>Nice work! Now try the next puzzle.</b>';
+       }
+       document.getElementById('nextPuzzleButton').style.display = 'block'; //show hidden "next puzzle" button
+       window.scrollTo(0, document.body.scrollHeight); //scroll to bottom of page after solution entered correctly
+     } else {
+       document.getElementById('Congratulations').innerHTML =
+         '<b>Not quite - try again.</b>';
+       window.scrollTo(0, document.body.scrollHeight);
+     }
+   }
+   
+   //check solutions for puzzle 2 (blue & brown button totals equal)
+   function checkSolutions2() {
+     if (blueBrownTotalValues[0] === blueBrownTotalValues[1]){
+       if (puzzleCounter[0] === 4) {
+         document.getElementById('Congratulations').innerHTML =
+           '<b>It seems you ARE ready! Time for your next quest...</b>';
+         document.getElementById('nextPuzzleButton').innerHTML =
+           'Click Here To<br>Begin The 3rd Quest!';
+         document.getElementById('myAudio').src =
+           'https://upload.wikimedia.org/wikipedia/commons/a/aa/Bach%2C_from_Cantata_BWV_67%2C_4th_movement%2C_bars_8-13.wav';
+         x.play();
+       } else {
+         document.getElementById('Congratulations').innerHTML =
+           '<b>Nice work! Now try the next puzzle.</b>';
+       }
+       document.getElementById('nextPuzzleButton').style.display = 'block'; //show hidden "next puzzle" button
+       window.scrollTo(0, document.body.scrollHeight); //scroll to bottom of page after solution entered correctly
+     } else {
+       document.getElementById('Congratulations').innerHTML =
+         '<b>Not quite - try again.</b>';
+       window.scrollTo(0, document.body.scrollHeight);
+     }
+   }
+   
+   //this function updates the puzzle display
+   function updatePuzzleDisplay() {
+     //update for next puzzle when next button is clicked
+     if (puzzleCounter[0] === 4) {
+       document.getElementById(challengeWindowNameArray[myChapterIndex[0]]).style.display = 'none';
+       myChapterIndex[0]++; //update current Chapter index
+       document.getElementById(challengeWindowNameArray[myChapterIndex[0]]).style.display = 'block';
+       puzzleCounter[0] = 0; //reset puzzle counter for next puzzle
+       document.getElementById('storyWindow').style.display = 'block'; //show storyWindow
+       document.getElementById('puzzleWindow').style.display = 'none'; //hide puzzleWindow
+       activeWindow[0] = 'storyWindow';
+       chooseDisplayPage();
+       updateAudioSettings();
+       document.getElementById('nextPuzzleButton').innerHTML = "Next Puzzle";
+     } else {
+       puzzleCounter[0]++;
+       resetButtonValues(); //resets all button values
+       hideAllHints(); //set all hints to hidden
+     }
+     document.getElementById('nextPuzzleButton').style.display = 'none';
+     document.getElementById('Congratulations').innerHTML =
+         "<b>Click the 'Submit' button when ready.</b>";
+     document.getElementById("subheader").innerHTML = "Chapter " + (myChapterIndex[0]+1).toString() + " Puzzle Challenge!";
+     window.scrollTo(0, 0); //scrolls to top of page
+   }
+   //***************************END OF SCRIPT FOR PUZZLE 1***************************
+   
+   //***********************SCRIPT FOR PUZZLE 2************************
+   puzzleCounter[0] = [0]; //start with the first puzzle (at zero) and count  up.
+   
+   let buttonValueArray1 = [3, 4, 7, 8, 14, 28, 0, 0];
+   let buttonValueArray2 = [1, 2, 15, 18, 22, 31, 46, 49];
+   let buttonValueArray3 = [-4, 7, 10, 15, 24, 31, 38, 47];
+   let buttonValueArray4 = [-18, -9, 13, 35, 68, 111, 130, 270];
+   let buttonValueArray5 = [-68, -39, -15, -2, 4, 23, 27, 42];
+   let buttonValueArray = [buttonValueArray1, buttonValueArray2, buttonValueArray3, buttonValueArray4, buttonValueArray5];
+   
+   let buttonNameArrayPuzzle2 = ["button1Puzzle2", "button2Puzzle2", "button3Puzzle2", "button4Puzzle2", "button5Puzzle2", "button6Puzzle2", "button7Puzzle2", "button8Puzzle2"];
+   
+   let buttonColorArrayPuzzle2 = ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"];
+   
+   let blueBrownTotalValues = [0, 0]; //0 for blue, 1 for brown
+   
+   updateButtonValues();
+   calculateButtonTotalsPuzzle2();
+   updateButtonTotalsDisplay(); //initializes display of button color totals
+   
+   //this function changes the color of a button after it is clicked. Total for each color should also be updated.
+   function changeButtonColor(p2Index){
+     if(buttonColorArrayPuzzle2[p2Index] === "blue"){
+       buttonColorArrayPuzzle2[p2Index] = "brown";
+       document.getElementById(buttonNameArrayPuzzle2[p2Index]).style.borderColor = "#99410e";
+     }else{
+       buttonColorArrayPuzzle2[p2Index] = "blue";
+       document.getElementById(buttonNameArrayPuzzle2[p2Index]).style.borderColor = "#008CBA";
+     }
+     calculateButtonTotalsPuzzle2();
+     updateButtonTotalsDisplay();
+   }
+   
+   //this function resets the button colors for each button in puzzle 2 to blue
+   function resetButtonColorsPuzzle2(){
+     for(i = 0; i < 8; i++){
+       buttonColorArrayPuzzle2[i] = "blue";
+       document.getElementById(buttonNameArrayPuzzle2[i]).style.borderColor = "#008CBA";
+     }
+   }
+   
+   //this function calculates the total values for each button color (blue & brown)
+   function calculateButtonTotalsPuzzle2(){
+     blueBrownTotalValues[0] = 0;
+     blueBrownTotalValues[1] = 0;
+     for(i = 0; i < 8; i++){
+       if(buttonColorArrayPuzzle2[i] === "blue"){
+         blueBrownTotalValues[0] += buttonValueArray[puzzleCounter[0]][i];
+       }else{
+         blueBrownTotalValues[1] += buttonValueArray[puzzleCounter[0]][i];
+       }
+     }
+   }
+   
+   //this function updates the display to show the new button totals for blue and brown
+   function updateButtonTotalsDisplay(){
+     document.getElementById('blueButtonTotalPuzzle2').innerHTML = "<b>Blue Button Total Value: " + blueBrownTotalValues[0] + "</b>";
+     document.getElementById('brownButtonTotalPuzzle2').innerHTML = "<b>Brown Button Total Value: " + blueBrownTotalValues[1] + "</b>";
+   }
+   
+   let vial1Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial1.jpg";
+   let vial2Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial2.jpg";
+   let vial3Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial3.jpg";
+   let vial4Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial4.jpg";
+   let vial5Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial5.jpg";
+   let vial6Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial6.jpg";
+   let vial7Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial7.jpg";
+   let vial8Image = "https://jdmeducational.com/wp-content/uploads/2024/05/vial8.jpg";
+   let vialImageArray = [vial1Image, vial2Image, vial3Image, vial4Image, vial5Image, vial6Image, vial7Image, vial8Image];
+   
+   //this function updates the values displayed on the buttons
+   function updateButtonValues(){
+     for(t = 0; t < buttonNameArrayPuzzle2.length; t++){
+       document.getElementById(buttonNameArrayPuzzle2[t]).innerText = buttonValueArray[puzzleCounter[0]][t];
+     }
+     document.getElementById("button1Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial1.jpg)";
+     document.getElementById("button2Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial2.jpg)";
+     document.getElementById("button3Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial3.jpg)";
+     document.getElementById("button4Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial4.jpg)";
+     document.getElementById("button5Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial5.jpg)";
+     document.getElementById("button6Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial6.jpg)";
+     document.getElementById("button7Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial7.jpg)";
+     document.getElementById("button8Puzzle2").style.backgroundImage = "url(https://jdmeducational.com/wp-content/uploads/2024/05/vial8.jpg)";
+   }
+   //***************************END OF SCRIPT FOR PUZZLE 2***************************
+   
+   //***********************SCRIPT FOR PUZZLE 3************************
+   //this function rotates an image 60 degrees clockwise
+   function rotateClockwise60(){
+     //implement...
+   }
+   //***************************END OF SCRIPT FOR PUZZLE 3***************************
+   
+   //end javascript
+</script>
